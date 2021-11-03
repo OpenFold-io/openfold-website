@@ -1,65 +1,97 @@
 @import url(https://fonts.googleapis.com/css?family=Abril+Fatface|Lato|Nunito+Sans:400,600);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css);
 
-.tagline {
-    width: 400px;
-    margin: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border: 1px solid white;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
-    font-size: 24px;
+
+body {
+  font-family: Nunito Sans,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 1.42857;
+  color: #585858;
+  background-color: #fff
 }
 
-@media only screen and (max-width: 600px) {
-    .tagline {
-      width: 200px;
+h1,h2,h3,h4,h5,h6 {
+  font-family: Abril Fatface,Times New Roman,Times,serif;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #000
+}
 
-    }
-  }
+h1::after, h2::after {
+  content: "";
+  display: block;
+  background-color: #66c0b3;
+  height: 3px;
+  margin: 20px 0;
+  width: 70px;
+}
+
+h1.text-center:after, h2.text-center:after {
+  margin: 20px auto
+}
+
+.hero {
+  background-image: url('./assets/images/of1.jpg');
+  height:50vh;
+  background-size: cover;
+}
+.tagline {
+  width: 400px;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  font-size: 24px;
+}
 
 .notify {
-    margin-top: 120px;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.footer-container {
-    background-color: #333;
-}
-
-.features .row, .members .row{
-    margin-bottom: 30px;
+  margin-top: 120px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .timeline {
-    background-color: lightgrey;
-    color: #585858;
+  background-color: lightgrey;
+  color: #585858;
 }
 
-.footer-container {
-    margin-top: 0;
+.members > div {
+  height: 200px;
+}
+
+.members img {
+  max-width: 200px;
+}
+
+.section-background {
+  background-image: url("./assets/images/of2.webp");
+  background-size: cover;
+}
+
+.rb-item {
+  width: 600px;
 }
 
 .rb-container .rb {
-    padding: 0
+  padding: 0
 
 }
-.rb-container ul.rb li {
+.rb-item {
   list-style: none;
   margin: auto;
-  margin-left: 10em;
+  margin-left: 5em;
   min-height: 50px;
   border-left: 2px dashed #fff;
-  padding: 0 0 70px 60px;
+  padding: 0 0 70px 50px;
   position: relative;
 }
 
-.rb-container ul.rb li:last-child {
+.rb-item:last-child {
   border-left: 0;
 }
 
-.rb-container ul.rb li::before {
+.rb-item::before {
   position: absolute;
   left: -25px;
   top: -5px;
@@ -72,7 +104,7 @@
   transition: all 500ms ease-in-out;
 }
 
-.rb-container ul.rb li .timestamp {
+.rb-item .timestamp {
   color: #66c0b3;
   position: relative;
   width: 150px;
@@ -83,4 +115,38 @@
 .rb-container .item-title {
   color: #585858;
   font-size: 18px;
+}
+
+@media only screen and (max-width: 992px) {
+  .rb-item {
+    width: 450px;
+    margin-left: 0em;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+  .tagline {
+    width: 250px;
+    font-size: 18px;
+  }
+  .titlename {
+    font-size: 72px;
+  }
+
+  .rb-item {
+    width: 400px !important;
+    margin-left: 1em !important;
+  }
+
+  .rb-item .timestamp {
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .rb-item {
+    width: 300px !important;
+    margin-left: 0em !important;
+  }
 }
