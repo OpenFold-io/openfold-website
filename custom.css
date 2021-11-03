@@ -31,11 +31,15 @@ h1.text-center:after, h2.text-center:after {
 }
 
 .hero {
-  background-image: url('./assets/images/of1.jpg');
-  height:50vh;
+  background-image: url('./assets/images/engineered_protein_openfold.jpg');
+  height:70vh;
   background-size: cover;
 }
-.tagline {
+
+.hero .title {
+  text-shadow: 1px 1px 2px #000;
+}
+.hero .tagline {
   width: 400px;
   margin: auto;
   padding-top: 20px;
@@ -46,9 +50,14 @@ h1.text-center:after, h2.text-center:after {
   font-size: 24px;
 }
 
-.notify {
+.hero .notify {
   margin-top: 120px;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.fold-button {
+  background-color: #66c0b3;
+  border: none;
 }
 
 .timeline {
@@ -65,7 +74,7 @@ h1.text-center:after, h2.text-center:after {
 }
 
 .section-background {
-  background-image: url("./assets/images/of2.webp");
+  background-image: url("./assets/images/of1.jpg");
   background-size: cover;
 }
 
