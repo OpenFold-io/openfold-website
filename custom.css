@@ -30,6 +30,10 @@ h1.text-center:after, h2.text-center:after {
   margin: 20px auto
 }
 
+.navbar .nav-item {
+  margin-right: 30px;
+}
+
 .hero {
   position: relative;
   height: 70vh;
