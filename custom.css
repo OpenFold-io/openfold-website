@@ -94,7 +94,7 @@ h1.text-center:after, h2.text-center:after {
 }
 
 .section-background {
-  background-image: url("./assets/images/of2.webp");
+  background-image: url("./assets/images/ig.png");
   background-size: cover;
 }
 
@@ -159,7 +159,7 @@ h1.text-center:after, h2.text-center:after {
     margin-top: -40px;
     font-size: 50px;
   }
-  
+
   .hero .title::after {
     width: 300px;
   }
