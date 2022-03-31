@@ -85,11 +85,11 @@ h1.text-center:after, h2.text-center:after {
   color: #585858;
 }
 
-.members > div {
-  height: 200px;
+.members > div, .supporters > div {
+  height: 125px;
 }
 
-.members img {
+.members img, .supporters img {
   max-width: 200px;
 }
 
