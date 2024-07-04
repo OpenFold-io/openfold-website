@@ -71,6 +71,9 @@
                     <a class="nav-link text-light" href="#teamarea">Our Team</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link text-light" href="#projectarea">Projects</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link text-light" href="#membersarea">Members</a>
                 </li>
                 <li class="nav-item">
@@ -92,6 +95,33 @@
             <div class="col-12">
                 <h1 class="display-1 text-center text-white title">OpenFold</h1>
                 <p class="tagline">Democratizing AI for Biology</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-none timeline py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12">
+                <h1 class="text-center">Timeline</h1>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="offset-md-2 col-md-8 col-sm-12">
+                <ul class="rb">
+                    <li class="rb-item">
+                        <div class="timestamp">1 Month</div>
+                        <div class="item-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                    </li>
+                    <li class="rb-item">
+                        <div class="timestamp">3 Months</div>
+                        <div class="item-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                    </li>
+                    <li class="rb-item">
+                        <div class="timestamp">6 Months</div>
+                        <div class="item-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -333,7 +363,7 @@
                                 <img src="./assets/teamMembers/MAlQuraishi.jpg" alt="Prof. Mohammed AlQuraishi">
                             </div>
                             <div class="name">
-                                Prof. Mohammed AlQuraishi<br>
+                                Professor Mohammed AlQuraishi, PhD<br>
                                 Columbia University
                             </div>
                         </div>
@@ -348,7 +378,7 @@
                                 <img src="./assets/teamMembers/GRocklin.jpg" alt="Prof. Gabriel Rocklin">
                             </div>
                             <div class="name">
-                                Prof. Gabriel Rocklin<br>
+                                Professor Gabriel Rocklin, PhD<br>
                                 Northwestern University
                             </div>
                         </div>
@@ -604,33 +634,56 @@
         </div>
     </div>
 </div>
-
-<!--
-    Ongoing and Maintained Projects
-       <div class="row mt-4">
-           <div class="col-12">
-               <h2>Ongoing and Maintained Projects</h2>
-               <p>OpenFold</p>
-               <ul>
-                   <li><a href="https://openfold.readthedocs.io/en/latest/Inference.html">Original AlphaFold-2
-                       inspired model</a> with <a
-                           href="https://openfold.readthedocs.io/en/latest/Training_OpenFold.html">training
-                       documentation</a></li>
-                   <li><a href="https://openfold.readthedocs.io/en/latest/Multimer_Inference.html">OpenFold-Multimer</a>
-                   </li>
-                   <li>Initial inference code release available under permissive license</li>
-                   <li>Next-generation model weights development currently underway</li>
-               </ul>
-               <p><a href="https://openfold.readthedocs.io/en/latest/Single_Sequence_Inference.html">OpenFold-SoloSeq</a>
-                   – OpenFold monomer with no requirement for MSA input</p>
-               <p>OpenFold-SmallMolecule – currently under development by our employees and contributors</p>
-               <p>OpenStability – Enhanced <a
-                       href="https://www.nature.com/articles/s41586-023-06328-6">mega-scale</a> protein stability
-                   data underway with Prof. Gabriel Rocklin including an extension to larger protein domains</p>
-           </div>
-       </div>
-   </div> -->
-<div id="membersarea" class="membersarea py-5">
+<div id="projectarea" class="projectarea py-5">
+    <div class="container px-4 px-lg-5">
+        <!-- Content Row-->
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Supported Projects</h1>
+            </div>
+        </div>
+    </div>
+    <div class="members row text-center py-5 d-flex justify-content-center">
+        <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
+            <h4>OpenFold</h4>
+            <p> Our model, inspired by AlphaFold2, is available
+                <a href="https://openfold.readthedocs.io/en/latest/Inference.html">here</a>
+                with
+                <a
+                        href="https://openfold.readthedocs.io/en/latest/Training_OpenFold.html">training
+                    documentation.</a> Our inference code is available under a permissive license.
+            </p>
+        </div>
+        <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
+            <h4>OpenFold-Multimer</h4>
+            <p> Our model, inspired by AlphaFold-Multimer, is available
+                <a href="https://openfold.readthedocs.io/en/latest/Multimer_Inference.html">here.</a> Development of
+                next-generation model weights is currently underway.
+            </p>
+        </div>
+        <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
+            <h4>OpenFold-SoloSeq</h4>
+            <p> Our OpenFold-SoloSeq inference code is available
+                <a href="https://openfold.readthedocs.io/en/latest/Single_Sequence_Inference.html">here.</a>
+                OpenFold-SoloSeq predicts protein structures equivalent to the OpenFold model with no MSA input
+                required.</p>
+        </div>
+    </div>
+    <div class="members row text-center py-5 d-flex justify-content-center">
+        <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
+            <h4>OpenFold-SmallMolecule</h4>
+            <p>OpenFold-SmallMolecule is currently under development by our employees and contributors.</p>
+        </div>
+        <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
+            <h4>OpenStability</h4>
+            <p>OpenStability will provide enhanced <a
+                    href="https://www.nature.com/articles/s41586-023-06328-6">mega-scale</a> protein stability
+                data. This project is underway in Prof. Gabriel Rocklin's laboratory and includes an extension to larger
+                protein domains.</p>
+        </div>
+    </div>
+</div>
+<div id="membersarea" class="membersarea p-5 bg-light">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -736,7 +789,7 @@
     </div>
 
 </div>
-<div id="joining" class="joining p-5 bg-light">
+<div id="joining" class="joining py-5">
     <div class="container-fluid">
         <div class="row pb-5">
             <div class="col-12">
@@ -771,34 +824,7 @@
         </div>
     </div>
 </div>
-<div class="d-none timeline py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-lg-12">
-                <h1 class="text-center">Timeline</h1>
-            </div>
-        </div>
-        <div class="row ">
-            <div class="offset-md-2 col-md-8 col-sm-12">
-                <ul class="rb">
-                    <li class="rb-item">
-                        <div class="timestamp">1 Month</div>
-                        <div class="item-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                    </li>
-                    <li class="rb-item">
-                        <div class="timestamp">3 Months</div>
-                        <div class="item-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                    </li>
-                    <li class="rb-item">
-                        <div class="timestamp">6 Months</div>
-                        <div class="item-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="faq" class="faq py-5">
+<div id="faq" class="faq p-5 bg-light">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -850,7 +876,7 @@
         </div>
     </div>
 </div>
-<div id="foundersarea" class="membersarea p-5 bg-light">
+<div id="foundersarea" class="membersarea py-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -882,7 +908,7 @@
         </div>
     </div>
 </div>
-<div id="supportersarea" class="supportersarea py-sm-5">
+<div id="supportersarea" class="supportersarea p-5 bg-light">
     <div class="container">
         <div class="row">
             <div class="col-12">
