@@ -927,52 +927,148 @@
         </div>
     </div>
 </div>
-<div id="projectarea" class="projectarea py-5">
+<div id="projectarea" class="projectarea">
     <div class="container px-4 px-lg-5">
-        <!-- Content Row-->
+        <!-- Main Heading (Projects) -->
         <div class="row">
             <div class="col-12">
-                <h1 class="text-center">Supported Projects</h1>
+                <h1 class="text-center mb-0">Projects</h1>
             </div>
         </div>
-    </div>
-    <div class="members row text-center py-5 d-flex justify-content-center">
-        <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
-            <h4>OpenFold</h4>
-            <p> Our model, inspired by AlphaFold2, is available
-                <a href="https://openfold.readthedocs.io/en/latest/Inference.html">here</a>
-                with
-                <a
-                        href="https://openfold.readthedocs.io/en/latest/Training_OpenFold.html">training
-                    documentation.</a> Our inference code is available under a permissive license.
-            </p>
+
+        <!-- Our Work Section -->
+        <div class="container pt-3">
+            <h2 class="card-title text-left mb-4">Our Work</h2>
+
+            <!-- First Row of Cards (2 cards per row) -->
+            <div class="row gx-4 gx-lg-5 mb-4">
+                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h4 class="card-title">OpenFold</h4>
+                            <p class="card-text">Our model, inspired by AlphaFold2, is available
+                                <a href="https://openfold.readthedocs.io/en/latest/Inference.html">here</a>
+                                with
+                                <a href="https://openfold.readthedocs.io/en/latest/Training_OpenFold.html">training documentation.</a> Our inference code is available under a permissive license.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h4 class="card-title">OpenFold-Multimer</h4>
+                            <p class="card-text">Our model, inspired by AlphaFold-Multimer, is available
+                                <a href="https://openfold.readthedocs.io/en/latest/Multimer_Inference.html">here.</a> Development of next-generation model weights is currently underway.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Row of Cards (2 cards per row) -->
+            <div class="row gx-4 gx-lg-5 mb-4">
+                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h4 class="card-title">OpenFold-SoloSeq</h4>
+                            <p class="card-text">Our OpenFold-SoloSeq inference code is available
+                                <a href="https://openfold.readthedocs.io/en/latest/Single_Sequence_Inference.html">here.</a>
+                                OpenFold-SoloSeq predicts protein structures equivalent to the OpenFold model with no MSA input required.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h4 class="card-title">OpenFold-SmallMolecule</h4>
+                            <p class="card-text">OpenFold-SmallMolecule is currently under development by our employees and contributors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Row with Centered Card -->
+            <div class="row gx-4 gx-lg-5 mb-4 d-flex justify-content-center">
+                <div class="col-xs-12 col-md-6 col-lg-6 mb-4 text-center">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h4 class="card-title">OpenStability</h4>
+                            <p class="card-text">OpenStability will provide enhanced <a href="https://www.nature.com/articles/s41586-023-06328-6">mega-scale</a> protein stability data. This project is underway in Prof. Gabriel Rocklin's laboratory and includes an extension to larger protein domains.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
-            <h4>OpenFold-Multimer</h4>
-            <p> Our model, inspired by AlphaFold-Multimer, is available
-                <a href="https://openfold.readthedocs.io/en/latest/Multimer_Inference.html">here.</a> Development of
-                next-generation model weights is currently underway.
-            </p>
-        </div>
-        <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
-            <h4>OpenFold-SoloSeq</h4>
-            <p> Our OpenFold-SoloSeq inference code is available
-                <a href="https://openfold.readthedocs.io/en/latest/Single_Sequence_Inference.html">here.</a>
-                OpenFold-SoloSeq predicts protein structures equivalent to the OpenFold model with no MSA input
-                required.</p>
-        </div>
-    </div>
-    <div class="members row text-center py-5 d-flex justify-content-center">
-        <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
-            <h4>OpenFold-SmallMolecule</h4>
-            <p>OpenFold-SmallMolecule is currently under development by our employees and contributors.</p>
-        </div>
-        <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
-            <h4>OpenStability</h4>
-            <p>OpenStability will provide enhanced <a
-                    href="https://www.nature.com/articles/s41586-023-06328-6">mega-scale</a> protein stability
-                data. This project is underway in Prof. Gabriel Rocklin's laboratory and includes an extension to larger
-                protein domains.</p>
+
+        <!-- Related Work Section -->
+        <div class="container pt-3">
+            <h2 class="card-title text-left mb-4">Related Work</h2>
+
+            <!-- First Row of Cards (2 cards per row) -->
+            <div class="row gx-4 gx-lg-5 mb-4">
+                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h4 class="card-title">ESMFold</h4>
+                            <p class="card-text">ESM Fold is available
+                                <a href="https://github.com/facebookresearch/esm" target="_blank" rel="noopener noreferrer">here.</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h4 class="card-title">MLPerf</h4>
+                            <p class="card-text">MLPerf is available
+                                <a href="https://mlcommons.org/2023/11/mlperf-training-v3-1-hpc-v3-0-results/" target="_blank" rel="noopener noreferrer">here.</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Row of Cards (2 cards per row) -->
+            <div class="row gx-4 gx-lg-5 mb-4">
+                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h4 class="card-title">AlphaLink</h4>
+                            <p class="card-text">Information on AlphaLink is available
+                                <a href="https://www.nature.com/articles/s41587-023-01704-z" target="_blank" rel="noopener noreferrer">here.</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h4 class="card-title">AlphaFlow</h4>
+                            <p class="card-text">An ArXIV article on AlphaFlow is available
+                                <a href="https://arxiv.org/pdf/2402.04845" target="_blank" rel="noopener noreferrer">here.</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third Row with Centered Card -->
+            <div class="row gx-4 gx-lg-5 mb-4 d-flex justify-content-center">
+                <div class="col-xs-12 col-md-6 col-lg-6 mb-4 text-center">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h4 class="card-title">DEERFold</h4>
+                            <p class="card-text">An article on DEERFold is available
+                                <a href="https://www.biorxiv.org/content/10.1101/2024.10.30.621127v1" target="_blank" rel="noopener noreferrer">here.</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -1300,5 +1396,46 @@
     </div>
 </footer>
 </body>
+
+<!-- Old project region
+<div class="members row text-center py-5 d-flex justify-content-center">
+    <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
+        <h4>OpenFold</h4>
+        <p> Our model, inspired by AlphaFold2, is available
+            <a href="https://openfold.readthedocs.io/en/latest/Inference.html">here</a>
+            with
+            <a
+                    href="https://openfold.readthedocs.io/en/latest/Training_OpenFold.html">training
+                documentation.</a> Our inference code is available under a permissive license.
+        </p>
+    </div>
+    <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
+        <h4>OpenFold-Multimer</h4>
+        <p> Our model, inspired by AlphaFold-Multimer, is available
+            <a href="https://openfold.readthedocs.io/en/latest/Multimer_Inference.html">here.</a> Development of
+            next-generation model weights is currently underway.
+        </p>
+    </div>
+    <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
+        <h4>OpenFold-SoloSeq</h4>
+        <p> Our OpenFold-SoloSeq inference code is available
+            <a href="https://openfold.readthedocs.io/en/latest/Single_Sequence_Inference.html">here.</a>
+            OpenFold-SoloSeq predicts protein structures equivalent to the OpenFold model with no MSA input
+            required.</p>
+    </div>
+</div>
+<div class="members row text-center py-5 d-flex justify-content-center">
+    <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
+        <h4>OpenFold-SmallMolecule</h4>
+        <p>OpenFold-SmallMolecule is currently under development by our employees and contributors.</p>
+    </div>
+    <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
+        <h4>OpenStability</h4>
+        <p>OpenStability will provide enhanced <a
+                href="https://www.nature.com/articles/s41586-023-06328-6">mega-scale</a> protein stability
+            data. This project is underway in Prof. Gabriel Rocklin's laboratory and includes an extension to larger
+            protein domains.</p>
+    </div>
+</div> -->
 
 </html>
