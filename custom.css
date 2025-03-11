@@ -20,7 +20,7 @@ h1,h2,h3,h4,h5,h6 {
 h1::after, h2::after {
   content: "";
   display: block;
-  background-color: #66c0b3;
+  background-color: #2f9ddb;
   height: 3px;
   margin: 20px 0;
   width: 70px;
@@ -41,15 +41,16 @@ h1.text-center:after, h2.text-center:after {
 
 .hero::before {
   content: "";
-  background-image: url('./assets/images/engineered_protein_openfold.jpg');
-  background-size: cover;
+  background-image: url('./assets/openFold-logo/blue/png/OpenFold+tagline-blue.png');
+  background-size: contain;
+  background-repeat: no-repeat;
   background-position: center;
   position: absolute;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
-  filter:brightness(50%);
+  filter:brightness(80%);
 }
 
 .hero .title {
@@ -76,7 +77,7 @@ h1.text-center:after, h2.text-center:after {
 }
 
 .fold-button {
-  background-color: #66c0b3;
+  background-color: #2f9ddb;
   border: none;
 }
 
@@ -127,14 +128,14 @@ h1.text-center:after, h2.text-center:after {
   content: " ";
   border: 10px solid rgba(255, 255, 255, 1);
   border-radius: 500%;
-  background: #66c0b3;
+  background: #2f9ddb;
   height: 50px;
   width: 50px;
   transition: all 500ms ease-in-out;
 }
 
 .rb-item .timestamp {
-  color: #66c0b3;
+  color: #2f9ddb;
   position: relative;
   width: 150px;
   font-size: 28px;
