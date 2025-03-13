@@ -42,7 +42,7 @@ h1.text-center:after, h2.text-center:after {
 .hero::before {
   content: "";
   background-image: url('./assets/openFold-logo/blue/png/OpenFold+tagline-blue.png');
-  background-size: contain;
+  background-size: 70%;
   background-repeat: no-repeat;
   background-position: center;
   position: absolute;
