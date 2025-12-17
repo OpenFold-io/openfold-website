@@ -218,7 +218,7 @@
         <div class="row pb-5">
             <div class="col-12">
                 <h1 class="text-center">How to Contribute</h1>
-                <p class="text-center mb-0">
+                <p class="text-center text-muted mb-0">
                     OpenFold is built by a community that believes core structural-biology infrastructure should be open,
                     reproducible, and extensible. Choose the contribution path that fits you best.
                 </p>
@@ -229,75 +229,82 @@
             <!-- Join -->
             <div class="col-md-4 mb-5">
                 <h4>Join the Consortium</h4>
+                <p class="text-muted mb-2">
+                    <strong>Best for:</strong> organizations that want to help set priorities and sustain OpenFold.
+                </p>
                 <p class="pb-xs-1 pb-lg-3">
-                    Consortium membership is the most direct way for organizations to sustain OpenFold and shape where it goes
-                    next. Members support the work financially and technically, and participate in community-driven
-                    prioritization of new capabilities, benchmarks, and releases.
+                    Consortium members contribute financially and/or technically and participate in community-driven
+                    roadmap decisions.
                 </p>
 
                 <ul class="mb-4">
-                    <li>Help set roadmap priorities and high-impact project directions</li>
-                    <li>Support open, inspectable, retrainable modeling infrastructure</li>
-                    <li>Connect your team with a network of peer organizations working on shared challenges</li>
+                    <li>Influence high-impact roadmap priorities</li>
+                    <li>Support open, retrainable modeling infrastructure</li>
+                    <li>Connect with peer orgs working on shared challenges</li>
                 </ul>
 
-                <p class="text-muted  mb-3">
-                    Membership is primarily intended for organizations and is formalized through a participation agreement. Email info@openfold.io to request details.
+                <p class="text-muted mt-3 mb-0">
+                    Membership is primarily intended for organizations and is formalized through a participation agreement.
                 </p>
             </div>
 
             <!-- Collaborate -->
             <div class="col-md-4 mb-5">
                 <h4>Collaborate</h4>
+                <p class="text-muted mb-2">
+                    <strong>Best for:</strong> researchers, academic labs, non-profits, and teams with aligned projects.
+                </p>
                 <p class="pb-xs-1 pb-lg-3">
-                    Not ready for membership, but want to help? We welcome collaboration with aligned organizations and
-                    individuals, especially efforts that improve scientific rigor, usability, and real-world adoption.
+                    We welcome collaborations that improve rigor, usability, and real-world adoption.
                 </p>
 
                 <ul class="mb-3">
-                    <li>Research collaborations (methods, evaluations, and benchmarks)</li>
-                    <li>Engineering support (pipelines, inference tooling, docs, integrations)</li>
+                    <li>Benchmarks, evaluations, and method development</li>
+                    <li>Engineering support (pipelines, tooling, integrations)</li>
                     <li>Data and test cases that strengthen reproducibility and coverage</li>
                     <li>Compute resources for training and benchmarking</li>
                 </ul>
-
-                <p class="text-muted mb-3">
-                    <strong>Note for academic and non-profit groups:</strong> if formal consortium membership isn’t the right fit,
-                    we still strongly encourage you to reach out!
-                </p>
             </div>
 
-            <!-- Philanthropy (moved up) -->
+            <!-- Philanthropy -->
             <div class="col-md-4 mb-5">
                 <h4>Philanthropy</h4>
+                <p class="text-muted mb-2">
+                    <strong>Best for:</strong> individuals, foundations, and Donor-Advised Funds (DAFs) supporting open science.
+                </p>
                 <p class="pb-xs-1 pb-lg-3">
-                    OpenFold is hosted by the Open Molecular Software Foundation (OMSF). If you’re giving through a Donor-Advised
-                    Fund (DAF) or another philanthropic vehicle, you can fund
-                    OMSF directly with OpenFold in the memo. We can also accept philanthropic gifts via wire transfer. Email us at info@openfold.io and we’ll share the
-                    appropriate donation details and instructions.
+                    OpenFold is hosted by the Open Molecular Software Foundation (OMSF), a 501(c)3 non-profit. If you’re giving through a Donor-Advised
+                    Fund (DAF) or another philanthropic vehicle, you can fund OMSF directly with <strong>OpenFold</strong> in the memo.
                 </p>
-                <p class="text-muted mb-0">
-                    Tip for DAFs: search your provider’s directory for “Open Molecular Software Foundation” (OMSF). For wire
-                    transfers, email info@openfold.io and we’ll provide instructions.
-                </p>
+
+                <ul class="mb-4">
+                    <li>DAFs can find “Open Molecular Software Foundation (OMSF)” in provider directories</li>
+                    <li>We can accept wire transfers for philanthropic gifts</li>
+                    <li>Email us for donation instructions and routing details</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="row gx-4 gx-lg-5 d-flex justify-content-center pb-4">
+            <div class="col-12 text-center">
+                <button type="button" class="btn text-white fold-button" id="contactOpenFoldBtn">
+                    Contact OpenFold
+                </button>
             </div>
         </div>
 
-        <!-- Code (moved down) -->
+        <!-- Code -->
         <div class="row gx-4 gx-lg-5 d-flex justify-content-center">
             <div class="col-12 col-lg-10 mb-5">
                 <h4 class="text-center">Contribute through Code</h4>
                 <p class="text-center text-muted mb-4">
-                    OpenFold is open source, so anyone can improve it! Whether you’re fixing a bug, improving performance, adding a
-                    feature, or strengthening documentation, contributions through issues and pull requests are the fastest way to
-                    have an impact.
+                    OpenFold is open source, so anyone can improve it. The fastest way to contribute is through GitHub issues and pull requests.
                 </p>
 
-                <!-- Center the bullets (block centered; bullet text stays readable/left-aligned) -->
                 <div class="d-flex justify-content-center">
                     <ul class="mb-4 d-inline-block text-start">
-                        <li>File actionable issues (reproduction steps, logs, expected vs. actual behavior)</li>
-                        <li>Submit PRs with tests and clear descriptions of changes</li>
+                        <li>Open an issue with clear reproduction steps and logs</li>
+                        <li>Submit PRs with tests and a concise description of changes</li>
                         <li>Improve docs and examples so more researchers can adopt the tooling</li>
                     </ul>
                 </div>
@@ -312,6 +319,61 @@
                 </div>
             </div>
         </div>
+
+        <!-- Toast (bottom-left email reveal) -->
+        <style>
+            .of-email-toast {
+                position: fixed;
+                left: 1rem;
+                bottom: 1rem;
+                z-index: 9999;
+                padding: .75rem 1rem;
+                border-radius: .75rem;
+                background: rgba(0,0,0,.85);
+                color: #fff;
+                box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.25);
+                opacity: 0;
+                transform: translateY(8px);
+                transition: opacity .2s ease, transform .2s ease;
+                pointer-events: none;
+                max-width: calc(100vw - 2rem);
+            }
+            .of-email-toast.show {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .of-email-toast .email {
+                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            }
+        </style>
+
+        <script>
+            (function () {
+                const email = "info@openfold.io";
+
+                function showEmailToast() {
+                    let t = document.getElementById("ofEmailToast");
+                    if (!t) {
+                        t = document.createElement("div");
+                        t.id = "ofEmailToast";
+                        t.className = "of-email-toast";
+                        t.innerHTML = 'Email: <span class="email">' + email + '</span>';
+                        document.body.appendChild(t);
+                    }
+                    t.classList.add("show");
+                    clearTimeout(window.__ofEmailToastTimer);
+                    window.__ofEmailToastTimer = setTimeout(() => t.classList.remove("show"), 2500);
+                }
+
+                const btn = document.getElementById("contactOpenFoldBtn");
+                if (btn) {
+                    btn.addEventListener("click", function () {
+                        showEmailToast();
+                    });
+                }
+            })();
+        </script>
+
     </div>
 </div>
 <div id="news" class="news py-5">
