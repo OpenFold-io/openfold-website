@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OpenFold — Open AI Infrastructure for Biology and Drug Discovery</title>
-  <meta name="description" content="OpenFold is a non-profit consortium building free, open-source AI tools for structural biology and drug discovery — trained, auditable, and available to everyone.">
+  <title>OpenFold: Open AI Infrastructure for Biology and Drug Discovery</title>
+  <meta name="description" content="OpenFold is a non-profit consortium building free, open-source AI tools for structural biology and drug discovery, trained, auditable, and available to everyone.">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/nav.css">
 </head>
@@ -39,11 +39,11 @@
   <!-- ===================== HERO ===================== -->
   <header class="hero">
     <div class="container hero__inner">
-      <h1>Open AI Infrastructure for Biology and Drug Discovery</h1>
-      <p class="hero__sub">OpenFold is a non-profit consortium building free, open-source AI tools for structural biology — trained, auditable, and available to everyone.</p>
+      <img class="hero__logo" src="assets/openFold-logo/white/svg/OpenFold+tagline-white.svg" alt="OpenFold: Democratizing AI for Biology">
+      <p class="hero__sub">OpenFold is a non-profit consortium building free, open-source AI tools for structural biology, trained, auditable, and available to everyone.</p>
       <div class="hero__cta">
         <a class="btn btn--primary" href="science.html">Explore the Science</a>
-        <a class="btn btn--ghost" href="https://portal.openfold.omsf.io/" target="_blank" rel="noopener noreferrer">Launch Portal</a>
+        <a class="btn btn--primary" href="https://portal.openfold.omsf.io/" target="_blank" rel="noopener noreferrer">Launch Portal</a>
       </div>
     </div>
   </header>
@@ -163,7 +163,7 @@
             <li>Connect with peer orgs on shared challenges</li>
           </ul>
           <div class="card__footer">
-            <a class="btn btn--primary btn--sm" href="mailto:info@openfold.io">Contact Us</a>
+            <button class="btn btn--primary btn--sm" type="button" data-contact>Contact Us</button>
           </div>
         </article>
         <article class="card contribute-card">
@@ -175,7 +175,7 @@
             <li>Data and compute that strengthen reproducibility</li>
           </ul>
           <div class="card__footer">
-            <a class="btn btn--primary btn--sm" href="mailto:info@openfold.io">Contact Us</a>
+            <button class="btn btn--primary btn--sm" type="button" data-contact>Contact Us</button>
           </div>
         </article>
         <article class="card contribute-card">
@@ -187,7 +187,7 @@
             <li>Email us for donation and routing details</li>
           </ul>
           <div class="card__footer">
-            <a class="btn btn--primary btn--sm" href="mailto:info@openfold.io">Contact Us</a>
+            <button class="btn btn--primary btn--sm" type="button" data-contact>Contact Us</button>
           </div>
         </article>
       </div>
@@ -200,7 +200,7 @@
   <div class="container">
     <div class="site-footer__grid">
       <div>
-        <p>OpenFold is a project of the Open Molecular Software Foundation (OMSF), a 501(c)3 non-profit.</p>
+        <img class="site-footer__logo" src="assets/openFold-logo/white/svg/OpenFold-white.svg" alt="OpenFold">        <p>OpenFold is a project of the Open Molecular Software Foundation (OMSF), a 501(c)3 non-profit.</p>
       </div>
       <div>
         <h4>Connect</h4>
@@ -219,14 +219,30 @@
       <div>
         <h4>Newsletter</h4>
         <p style="margin-bottom:0.9rem;">Model releases, consortium news, and community updates.</p>
-        <a class="btn btn--ghost btn--sm" href="https://openfold.ghost.io/" target="_blank" rel="noopener noreferrer">Subscribe</a>
+        <a class="btn btn--primary btn--sm" href="https://openfold.ghost.io/" target="_blank" rel="noopener noreferrer">Subscribe</a>
       </div>
     </div>
     <div class="site-footer__bottom">© 2026 OpenFold Consortium</div>
   </div>
 </footer>
 
+<!-- ===================== CONTACT MODAL ===================== -->
+<div class="contact-modal" id="contactModal" hidden>
+  <div class="contact-modal__overlay" data-contact-close></div>
+  <div class="contact-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <button class="contact-modal__close" type="button" aria-label="Close" data-contact-close>&times;</button>
+    <h3 id="contactModalTitle">Get in touch</h3>
+    <p>Reach the OpenFold team at the address below.</p>
+    <div class="contact-modal__email">
+      <span class="contact-modal__address mono">info@openfold.io</span>
+      <button class="btn btn--primary btn--sm" type="button" id="contactCopyBtn">Copy</button>
+    </div>
+    <a class="btn btn--primary" href="mailto:info@openfold.io">Open in email app</a>
+  </div>
+</div>
+
 <script src="js/nav.js"></script>
 <script src="js/members.js"></script>
+<script src="js/contact.js"></script>
 </body>
 </html>

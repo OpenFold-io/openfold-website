@@ -1,4 +1,4 @@
-/* OpenFold — mobile nav toggle */
+/* OpenFold, mobile nav toggle */
 (function () {
   'use strict';
 

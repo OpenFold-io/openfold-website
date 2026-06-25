@@ -1,4 +1,4 @@
-/* OpenFold — Ghost Content API loader for the blog page.
+/* OpenFold, Ghost Content API loader for the blog page.
  *
  * Attempts to fetch recent posts from the Ghost Content API and render them
  * into #ghost-posts. If the fetch fails, returns no posts, or the API key is
@@ -56,7 +56,7 @@
 
   function loadPosts() {
     if (CONTENT_API_KEY === 'YOUR_CONTENT_API_KEY') {
-      // No key configured yet — keep the static fallback cards visible.
+      // No key configured yet, keep the static fallback cards visible.
       return;
     }
 

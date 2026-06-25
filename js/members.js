@@ -1,4 +1,4 @@
-/* OpenFold — consortium member logos.
+/* OpenFold, consortium member logos.
  *
  * Single source of truth for member logos and their links, rendered into the
  * homepage strip (#member-logos) and the full community grid (#member-logos-full).
