@@ -81,6 +81,80 @@ h1.text-center:after, h2.text-center:after {
   border: none;
 }
 
+/* Newsletter modal (inline PDF viewer) */
+.newsletter-modal[hidden] { display: none; }
+
+.newsletter-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.newsletter-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.newsletter-modal__dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 960px;
+  height: 90vh;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.newsletter-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.newsletter-modal__head h2 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.newsletter-modal__head h2::after { display: none; }
+
+.newsletter-modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.newsletter-modal__close {
+  background: transparent;
+  border: none;
+  color: #585858;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.newsletter-modal__close:hover { color: #000; }
+
+.newsletter-modal__frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background-color: #f5f5f5;
+}
+
 .timeline {
   background-color: lightgrey;
   color: #585858;
