@@ -714,7 +714,7 @@ main {
 }
 
 @media (min-width: 768px) {
-  .site-footer__grid { grid-template-columns: 2fr 1fr 1fr; }
+  .site-footer__grid { grid-template-columns: 2fr 1fr; }
 }
 
 .site-footer p,
@@ -875,4 +875,80 @@ main {
   font-weight: 600;
   color: var(--color-text-primary);
   word-break: break-all;
+}
+
+/* ==========================================================================
+   Newsletter modal (inline PDF viewer)
+   ========================================================================== */
+.newsletter-modal[hidden] { display: none; }
+
+.newsletter-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.newsletter-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.newsletter-modal__dialog {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 960px;
+  height: 90vh;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  animation: contact-pop 0.18s ease-out;
+}
+
+.newsletter-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.newsletter-modal__head h3 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.newsletter-modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.newsletter-modal__close {
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.newsletter-modal__close:hover { color: var(--color-text-primary); }
+
+.newsletter-modal__frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background-color: var(--color-bg);
 }

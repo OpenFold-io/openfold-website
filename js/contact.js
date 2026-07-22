@@ -1,5 +1,5 @@
 /* OpenFold, contact popup.
- * Opens a modal that prominently shows info@openfold.io with copy + email actions.
+ * Opens a modal that prominently shows info@openfold.io with a copy-to-clipboard action.
  * Any element with [data-contact] opens it; [data-contact-close] closes it.
  */
 (function () {
