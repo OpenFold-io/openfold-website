@@ -1,2046 +1,242 @@
-<!-- Add your content of head and header -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width=device-width,initial-scale=1" name="viewport">
-    <meta content="description" name="description">
-    <meta name="google" content="notranslate">
-    <meta
-            content="" name="author">
-    <!-- Disable tap highlight on IE -->
-    <meta name="msapplication-tap-highlight" content="no">
-    <title>OpenFold Consortium</title>
-    <!-- <link href="./main.css" rel="stylesheet"></head> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="./custom.css" rel="stylesheet">
-
-    <style>
-        .sponsor-logo-img {
-            max-width: 100px;
-            max-height: 100px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenFold: Open AI Infrastructure for Biology and Drug Discovery</title>
+  <meta name="description" content="OpenFold is a non-profit consortium building free, open-source AI tools for structural biology and drug discovery, trained, auditable, and available to everyone.">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/nav.css">
 </head>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        .profiles-container {
-            display: flex;
-            justify-content: center; /* Center the profiles horizontally */
-            gap: 20px; /* Add space between the profiles */
-        }
-
-        .profile-container {
-            text-align: center; /* Center the content */
-        }
-
-        .circular-image img {
-            border-radius: 50%;
-            width: 200px; /* Adjust the size as needed */
-            height: 200px; /* Adjust the size as needed */
-        }
-
-        .name {
-            margin-top: 10px; /* Add space between the image and the name */
-            font-size: 16px; /* Adjust the font size as needed */
-        }
-    </style>
-</head>
-
 <body>
-<nav class="navbar navbar-expand-lg navbar-black bg-black text-white sticky-top">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#features">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#whatis">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#qrcode">Contribute</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#news">News</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#teamarea">Our Team</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#projectarea">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#membersarea">Members</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#faq">FAQ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#foundersarea">Founders</a>
-                </li>
-            </ul>
-        </div>
+
+<!-- ===================== NAV ===================== -->
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__brand" href="index.html" aria-label="OpenFold home">
+      <img src="assets/openFold-logo/white/svg/OpenFold-white.svg" alt="OpenFold">
+    </a>
+    <button class="site-nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="site-nav__menu" id="primary-menu">
+      <ul class="site-nav__links">
+        <li><a href="index.html" class="is-active" aria-current="page">Home</a></li>
+        <li><a href="science.html">Models and Code</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="community.html">Community</a></li>
+      </ul>
+      <div class="site-nav__right">
+        <a class="btn btn--primary btn--sm" href="https://portal.openfold.omsf.io/" target="_blank" rel="noopener noreferrer">Launch Portal</a>
+      </div>
     </div>
+  </div>
 </nav>
-<div class="hero d-flex justify-content-center align-items-center text-white text-center py-5">
+
+<main>
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="container hero__inner">
+      <img class="hero__logo" src="assets/openFold-logo/white/svg/OpenFold+tagline-white.svg" alt="OpenFold: Democratizing AI for Biology">
+      <p class="hero__sub">OpenFold is a non-profit consortium building free, open-source AI tools for structural biology and drug discovery, trained, auditable, and available to everyone.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="science.html">Explore Models &amp; Code</a>
+        <a class="btn btn--primary" href="https://portal.openfold.omsf.io/" target="_blank" rel="noopener noreferrer">Launch Portal</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== IMPACT BAR ===================== -->
+  <section class="impact">
+    <div class="container impact__inner">
+      <div class="impact__item">
+        <div class="impact__stat">40+</div>
+        <div class="impact__label">Consortium Members</div>
+      </div>
+      <div class="impact__item">
+        <div class="impact__stat">Apache 2.0</div>
+        <div class="impact__label">Permissively Licensed</div>
+      </div>
+      <div class="impact__item">
+        <div class="impact__stat">OpenFold3</div>
+        <div class="impact__label">Now Available</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWS STRIP ===================== -->
+  <section class="section">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-            </div>
-        </div>
+      <div class="section__head">
+        <span class="eyebrow">Latest News</span>
+        <h2>What's happening at OpenFold</h2>
+      </div>
+      <div class="grid grid--3">
+        <article class="card card--hover news-card">
+          <span class="badge badge--muted news-card__source">BusinessWire</span>
+          <h3>OpenFold Consortium Adds Eleven New Members</h3>
+          <p>The consortium welcomed eleven new members, reflecting growing industry momentum behind open AI infrastructure for biology and drug discovery.</p>
+          <div class="card__footer">
+            <a class="link-arrow" href="https://www.businesswire.com/news/home/20260609986184/en/OpenFold-Consortium-Adds-Eleven-New-Members-as-Momentum-Builds-for-Open-AI-Infrastructure-in-Biology-and-Drug-Discovery" target="_blank" rel="noopener noreferrer">Read more</a>
+          </div>
+        </article>
+        <article class="card card--hover news-card">
+          <span class="badge badge--muted news-card__source">BusinessWire</span>
+          <h3>Rocklin Lab Releases Megascale Open Protein Stability Dataset</h3>
+          <p>The Rocklin Lab released a megascale open dataset of protein stability measurements to accelerate biomolecular AI research.</p>
+          <div class="card__footer">
+            <a class="link-arrow" href="https://www.businesswire.com/news/home/20260526185604/en/Rocklin-Lab-Releases-Megascale-Open-Protein-Stability-Dataset-to-Advance-Biomolecular-AI" target="_blank" rel="noopener noreferrer">Read more</a>
+          </div>
+        </article>
+        <article class="card card--hover news-card">
+          <span class="badge badge--muted news-card__source">BusinessWire</span>
+          <h3>OpenFold Launches Research Fellowship at UW Institute for Protein Design</h3>
+          <p>OpenFold and UW's Institute for Protein Design launched a research fellowship to advance open-source AI for protein structure prediction and design.</p>
+          <div class="card__footer">
+            <a class="link-arrow" href="https://www.businesswire.com/news/home/20260318671177/en/Open-Molecular-Software-Foundations-OpenFold-Consortium-Launches-Research-Fellowship-at-the-University-of-Washingtons-Institute-for-Protein-Design" target="_blank" rel="noopener noreferrer">Read more</a>
+          </div>
+        </article>
+      </div>
+      <div class="mt-2">
+        <a class="link-arrow" href="news.html">View all news</a>
+      </div>
     </div>
-</div>
-<div class="d-none timeline py-5">
+  </section>
+
+  <!-- ===================== SPOTLIGHT ===================== -->
+  <section class="section--tight">
     <div class="container">
-        <div class="row">
-            <div class="col-12 col-lg-12">
-                <h1 class="text-center">Timeline</h1>
-            </div>
-        </div>
-        <div class="row ">
-            <div class="offset-md-2 col-md-8 col-sm-12">
-                <ul class="rb">
-                    <li class="rb-item">
-                        <div class="timestamp">1 Month</div>
-                        <div class="item-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                    </li>
-                    <li class="rb-item">
-                        <div class="timestamp">3 Months</div>
-                        <div class="item-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                    </li>
-                    <li class="rb-item">
-                        <div class="timestamp">6 Months</div>
-                        <div class="item-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+      <div class="grid grid--2">
+        <article class="card card--hover spotlight-card">
+          <span class="eyebrow">Community Event</span>
+          <h3>CoFold Summit</h3>
+          <p>The annual gathering of the open biomolecular AI community.</p>
+          <div class="card__footer">
+            <a class="link-arrow" href="https://www.cofold.org/" target="_blank" rel="noopener noreferrer">Visit CoFold</a>
+          </div>
+        </article>
+        <article class="card card--hover spotlight-card">
+          <span class="eyebrow">Blind Challenge</span>
+          <h3>SEPIQ Blind Challenge</h3>
+          <p>A community blind challenge for structure-enabled property and interaction quantification.</p>
+          <div class="card__footer">
+            <a class="link-arrow" href="https://sepiq.uk/" target="_blank" rel="noopener noreferrer">Visit SEPIQ</a>
+          </div>
+        </article>
+      </div>
     </div>
-</div>
-<div id="features" class="features py-5 bg-light">
+  </section>
+
+  <!-- ===================== MEMBERS STRIP ===================== -->
+  <section class="section">
     <div class="container">
-        <div class="row pb-3 mb-3 pb-sm-1 mb-sm-1">
-            <div class="col-sm-12 col-lg-12">
-                <hr style="height:10px;border:none;color:#2f9ddb;">
-                <h2 class="display-5 text-center">Why OpenFold?</h2>
-            </div>
-        </div>
-        <div class="row text-black text-center">
-            <div class="col-sm-12 col-md-6 col-lg-4 py-3">
-                <div><i class="fab fa-osi fa-3x"></i></div>
-                <h3 class="pt-4 pb-2">Open Source</h3>
-                <p>An open-source project that can be used and improved by academics and companies alike.</p>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 py-3">
-                <div><i class="fas fa-project-diagram fa-3x"></i></div>
-                <h3 class="pt-4 pb-2">Weights Available</h3>
-                <p>Utilize the existing pre-trained weights to get quickly get started fine-tuning your model.</p>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 py-3">
-                <div><i class="fab fa-creative-commons fa-3x"></i></div>
-                <h3 class="pt-4 pb-2">Permissive License</h3>
-                <p>A permissively licensed model that allows commercial and non-commercial use.</p>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 py-3">
-                <div><i class="fa fa-code fa-3x"></i></div>
-                <h3 class="pt-4 pb-2">Training Pipeline</h3>
-                <p>Provides the tools used to train the model under the same license.</p>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 py-3">
-                <div><i class="fas fa-meteor fa-3x"></i></div>
-                <h3 class="pt-4 pb-2">Optimized for Performance</h3>
-                <p>Optimized performance for use on state-of-the-art and widely available GPUs.</p>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4 py-3">
-                <div><i class="fab fa-python fa-3x"></i></div>
-                <h3 class="pt-4 pb-2">PyTorch-Based</h3>
-                <p>A supercomputer scale, distributed training, PyTorch-based training framework</p>
-            </div>
-        </div>
+      <div class="section__head section__head--center">
+        <span class="eyebrow">Our Members</span>
+        <h2>40+ organizations advancing open biomolecular AI</h2>
+      </div>
+      <div class="logo-grid" id="member-logos">
+        <!-- Populated below; see community.html for the full, larger grid -->
+      </div>
+      <div class="mt-2 center">
+        <a class="link-arrow" href="community.html">See all members</a>
+      </div>
     </div>
-</div>
-<div id="whatis" class="whatis py-5">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="d-none d-lg-block col-lg-6 section-background py-5 px-5"></div>
-            <div class="col-md-12 col-lg-6 py-5 px-5">
-                <div class="row">
-                    <div class="col-12">
-                        <h1>What is OpenFold?</h1>
-                    </div>
-                </div>
-                <div class="row pt-3">
-                    <div class="col-12">
-                        <h3>Mission Statement</h3>
-                        <p>OpenFold is a non-profit AI research and development consortium developing free and
-                            open-source software tools for biology and drug discovery. Our mission is to bring the most
-                            powerful software ever created -- AI systems with the ability to engineer the molecules of
-                            life -- to everyone. These tools can be used by academics, biotech and pharmaceutical
-                            companies, or students learning to create the medicines of tomorrow, to accelerate basic
-                            biological research, and bring new cures to market that would be impossible to discover
-                            without AI. </p>
-                        <h3>Structure Prediction</h3>
-                        <p>In biology, structure and function are inextricably linked. Understanding the mechanisms of
-                            biological systems, their engineering, and how to affect them therefore implies a need to
-                            know and understand their structure. The consortium is creating state-of-the-art AI-based
-                            protein modeling tools that can predict molecular structures with atomic accuracy, making
-                            this level of precision accessible in open source for both research and commercial
-                            applications for the first time. Researchers around the world will be able to use, improve,
-                            and contribute to this "predictive molecular microscope.”</p>
-                        <h3>Goals</h3>
-                        <p>This work aims to:</p>
-                        <ul>
-                            <li>Develop a permissively licensed model competitive with the performance of
-                                state-of-the-art models.
-                            </li>
-                            <li>Provide the entire training & inference stack and training datasets under the same
-                                permissive license
-                            </li>
-                            <li>Optimize the performance of this model for use on state-of-the-art and widely available
-                                GPUs.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="qrcode" class="qrcode py-5 bg-light">
+  </section>
+
+  <!-- ===================== CONTRIBUTE CTA ===================== -->
+  <section class="section">
     <div class="container">
-        <div class="row pb-5">
-            <div class="col-12">
-                <h1 class="text-center">How to Contribute</h1>
-                <p class="text-center text-muted mb-0">
-                    OpenFold is built by a community that believes core structural-biology infrastructure should be
-                    open,
-                    reproducible, and extensible. Choose the contribution path that fits you best.
-                </p>
-            </div>
-        </div>
-
-        <div class="row gx-4 gx-lg-5 d-flex justify-content-center">
-            <!-- Join -->
-            <div class="col-md-4 mb-5">
-                <h4>Join the Consortium</h4>
-                <p class="text-muted mb-2">
-                    <strong>Best for:</strong> organizations that want to help set priorities and sustain OpenFold.
-                </p>
-                <p class="pb-xs-1 pb-lg-3">
-                    Consortium members contribute financially and/or technically and participate in community-driven
-                    roadmap decisions.
-                </p>
-
-                <ul class="mb-4">
-                    <li>Influence high-impact roadmap priorities</li>
-                    <li>Support open, retrainable modeling infrastructure</li>
-                    <li>Connect with peer orgs working on shared challenges</li>
-                </ul>
-
-                <p class="text-muted mt-3 mb-0">
-                    Membership is primarily intended for organizations and is formalized through a participation
-                    agreement.
-                </p>
-            </div>
-
-            <!-- Collaborate -->
-            <div class="col-md-4 mb-5">
-                <h4>Collaborate</h4>
-                <p class="text-muted mb-2">
-                    <strong>Best for:</strong> researchers, academic labs, non-profits, and teams with aligned projects.
-                </p>
-                <p class="pb-xs-1 pb-lg-3">
-                    We welcome collaborations that improve rigor, usability, and real-world adoption.
-                </p>
-
-                <ul class="mb-3">
-                    <li>Benchmarks, evaluations, and method development</li>
-                    <li>Engineering support (pipelines, tooling, integrations)</li>
-                    <li>Data and test cases that strengthen reproducibility and coverage</li>
-                    <li>Compute resources for training and benchmarking</li>
-                </ul>
-            </div>
-
-            <!-- Philanthropy -->
-            <div class="col-md-4 mb-5">
-                <h4>Philanthropy</h4>
-                <p class="text-muted mb-2">
-                    <strong>Best for:</strong> individuals, foundations, and Donor-Advised Funds (DAFs) supporting open
-                    science.
-                </p>
-                <p class="pb-xs-1 pb-lg-3">
-                    OpenFold is hosted by the Open Molecular Software Foundation (OMSF), a 501(c)3 non-profit. If you’re
-                    giving through a Donor-Advised
-                    Fund (DAF) or another philanthropic vehicle, you can fund OMSF directly with
-                    <strong>OpenFold</strong> in the memo.
-                </p>
-
-                <ul class="mb-4">
-                    <li>DAFs can find “Open Molecular Software Foundation (OMSF)” in provider directories</li>
-                    <li>We can accept wire transfers for philanthropic gifts</li>
-                    <li>Email us for donation instructions and routing details</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="row gx-4 gx-lg-5 d-flex justify-content-center pb-4">
-            <div class="col-12 text-center">
-                <button type="button" class="btn text-white fold-button" id="contactOpenFoldBtn">
-                    Contact OpenFold
-                </button>
-            </div>
-        </div>
-
-        <!-- Code -->
-        <div class="row gx-4 gx-lg-5 d-flex justify-content-center">
-            <div class="col-12 col-lg-10 mb-5">
-                <h4 class="text-center">Contribute through Code</h4>
-                <p class="text-center text-muted mb-4">
-                    OpenFold is open source, so anyone can improve it. The fastest way to contribute is through GitHub
-                    issues and pull requests.
-                </p>
-
-                <div class="d-flex justify-content-center">
-                    <ul class="mb-4 d-inline-block text-start">
-                        <li>Open an issue with clear reproduction steps and logs</li>
-                        <li>Submit PRs with tests and a concise description of changes</li>
-                        <li>Improve docs and examples so more researchers can adopt the tooling</li>
-                    </ul>
-                </div>
-
-                <div class="d-flex flex-wrap justify-content-center gap-2">
-                    <a class="btn text-white fold-button" href="https://github.com/aqlaboratory/openfold">
-                        Visit OpenFold GitHub
-                    </a>
-                    <a class="btn text-white fold-button" href="https://github.com/aqlaboratory/openfold-3">
-                        Visit OpenFold3 GitHub
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Toast (bottom-left email reveal) -->
-        <style>
-            .of-email-toast {
-                position: fixed;
-                left: 1rem;
-                bottom: 1rem;
-                z-index: 9999;
-                padding: .75rem 1rem;
-                border-radius: .75rem;
-                background: rgba(0, 0, 0, .85);
-                color: #fff;
-                box-shadow: 0 .75rem 1.5rem rgba(0, 0, 0, .25);
-                opacity: 0;
-                transform: translateY(8px);
-                transition: opacity .2s ease, transform .2s ease;
-                pointer-events: none;
-                max-width: calc(100vw - 2rem);
-            }
-
-            .of-email-toast.show {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .of-email-toast .email {
-                font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-            }
-        </style>
-
-        <script>
-            (function () {
-                const email = "info@openfold.io";
-
-                function showEmailToast() {
-                    let t = document.getElementById("ofEmailToast");
-                    if (!t) {
-                        t = document.createElement("div");
-                        t.id = "ofEmailToast";
-                        t.className = "of-email-toast";
-                        t.innerHTML = 'Email: <span class="email">' + email + '</span>';
-                        document.body.appendChild(t);
-                    }
-                    t.classList.add("show");
-                    clearTimeout(window.__ofEmailToastTimer);
-                    window.__ofEmailToastTimer = setTimeout(() => t.classList.remove("show"), 2500);
-                }
-
-                const btn = document.getElementById("contactOpenFoldBtn");
-                if (btn) {
-                    btn.addEventListener("click", function () {
-                        showEmailToast();
-                    });
-                }
-            })();
-        </script>
-
+      <div class="section__head section__head--center">
+        <span class="eyebrow">How to Contribute</span>
+        <h2>Join the mission</h2>
+        <p class="section__lead">OpenFold is built by a community that believes core structural-biology infrastructure should be open, reproducible, and extensible. Choose the contribution path that fits you best.</p>
+      </div>
+      <div class="grid grid--3">
+        <article class="card contribute-card">
+          <h3>Join the Consortium</h3>
+          <p>Consortium members contribute financially and/or technically and participate in community-driven roadmap decisions. Membership is primarily intended for organizations and is formalized through a participation agreement.</p>
+          <ul>
+            <li>Influence high-impact roadmap priorities</li>
+            <li>Support open, retrainable modeling infrastructure</li>
+            <li>Connect with peer orgs on shared challenges</li>
+          </ul>
+          <div class="card__footer">
+            <button class="btn btn--primary btn--sm" type="button" data-contact>Contact Us</button>
+          </div>
+        </article>
+        <article class="card contribute-card">
+          <h3>Collaborate</h3>
+          <p>We welcome collaborations with researchers, academic labs, non-profits, and teams with aligned projects that improve rigor, usability, and real-world adoption.</p>
+          <ul>
+            <li>Benchmarks, evaluations, and method development</li>
+            <li>Engineering support, pipelines, and integrations</li>
+            <li>Data and compute that strengthen reproducibility</li>
+          </ul>
+          <div class="card__footer">
+            <button class="btn btn--primary btn--sm" type="button" data-contact>Contact Us</button>
+          </div>
+        </article>
+        <article class="card contribute-card">
+          <h3>Support via Philanthropy</h3>
+          <p>OpenFold is hosted by the Open Molecular Software Foundation (OMSF), a 501(c)3 non-profit. Individuals, foundations, and Donor-Advised Funds can fund OMSF directly with <strong>OpenFold</strong> in the memo.</p>
+          <ul>
+            <li>Find OMSF in DAF provider directories</li>
+            <li>Wire transfers accepted for philanthropic gifts</li>
+            <li>Email us for donation and routing details</li>
+          </ul>
+          <div class="card__footer">
+            <button class="btn btn--primary btn--sm" type="button" data-contact>Contact Us</button>
+          </div>
+        </article>
+      </div>
     </div>
-</div>
-<div id="news" class="news py-5">
-    <div class="container px-4 px-lg-5">
-        <!-- Content Row-->
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">News</h1>
-            </div>
+  </section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      <div>
+        <img class="site-footer__logo" src="assets/openFold-logo/white/svg/OpenFold-white.svg" alt="OpenFold">        <p>OpenFold is a project of the Open Molecular Software Foundation (OMSF), a 501(c)3 non-profit.</p>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/company/openfold" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          </a>
+          <a href="https://bsky.app/profile/openfold.io" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">
+            <img src="assets/images/Bluesky.png" alt="" width="18" height="18">
+          </a>
+          <a href="https://twitter.com/open_fold" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.6l5.24 6.93 6.06-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3L17.61 20.65z"/></svg>
+          </a>
         </div>
-        <div class="row gx-4 gx-lg-5 d-flex justify-content-center pt-5">
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">OpenFold Community Update</h2>
-                        <p class="card-text">Our latest community newsletter, a roundup of consortium progress, model
-                            releases, and what's ahead for open AI infrastructure in biology. Read it right here on the
-                            site.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button" href="assets/newsletters/OpenFold_Community_Update.pdf"
-                                                data-newsletter>Read more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">OpenFold Consortium Adds Eleven New Members as Momentum Builds for Open
-                            AI Infrastructure in Biology and Drug Discovery</h2>
-                        <p class="card-text">The OpenFold Consortium has welcomed eleven new members, reflecting growing
-                            industry momentum behind open AI infrastructure for biology and drug discovery. The expanded
-                            membership underscores broad support for OpenFold's mission to develop and maintain
-                            open-source AI tools that accelerate structural biology and therapeutic research
-                            worldwide.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20260609986184/en/OpenFold-Consortium-Adds-Eleven-New-Members-as-Momentum-Builds-for-Open-AI-Infrastructure-in-Biology-and-Drug-Discovery">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">Rocklin Lab Releases Megascale Open Protein Stability Dataset to Advance
-                            Biomolecular AI</h2>
-                        <p class="card-text">The Rocklin Lab has released a megascale open dataset of protein stability
-                            measurements to accelerate biomolecular AI research. The large-scale, publicly available
-                            resource is designed to support training and benchmarking of AI models for protein stability
-                            prediction and design.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20260526185604/en/Rocklin-Lab-Releases-Megascale-Open-Protein-Stability-Dataset-to-Advance-Biomolecular-AI">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">Open Molecular Software Foundation’s OpenFold Consortium Launches
-                            Research Fellowship at the University of Washington’s Institute for Protein Design</h2>
-                        <p class="card-text">OpenFold and the University of Washington’s Institute for Protein Design
-                            led by Nobel Laureate David Baker, Ph. D., have launched a new research fellowship to
-                            advance open-source AI for protein structure prediction and design. The fellowship will
-                            support graduate students and postdoctoral scholars in the Baker Lab working on
-                            next-generation models for antibody-antigen design and structure prediction. OpenFold
-                            engineers will help package, document, and maintain the resulting software so it can be
-                            widely used and sustained over time. All models and code developed through the collaboration
-                            will be released under permissive licenses to support researchers and companies
-                            worldwide.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20260318671177/en/Open-Molecular-Software-Foundations-OpenFold-Consortium-Launches-Research-Fellowship-at-the-University-of-Washingtons-Institute-for-Protein-Design">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">OpenFold Consortium Announces Major OpenFold3 Update and Public Release
-                            of Training Data for Reproducible Biomolecular AI</h2>
-                        <p class="card-text">OpenFold Consortium has announced a major OpenFold3 update and the public
-                            release of training data to support reproducible biomolecular AI. OpenFold3 is an
-                            open-source cofolding system that predicts the 3D structures of biomolecular complexes from
-                            sequence and molecular inputs, including proteins interacting with small molecules and
-                            nucleic acids. This release includes training datasets, model weights, training and
-                            inference code, evaluation scripts, and updated benchmarks, enabling independent
-                            reproduction, benchmarking, retraining, and extension of the system. Together with the
-                            OpenFold portal, onboarding resources, and public technical support channel, these updates
-                            expand community access to open, auditable, and extensible AI infrastructure for biology and
-                            drug discovery.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20260313170622/en/OpenFold-Consortium-Announces-Major-OpenFold3-Update-and-Public-Release-of-Training-Data-for-Reproducible-Biomolecular-AI">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">SandboxAQ Supercharges OpenFold3 with AQAffinity: High-Speed,
-                            Structure-Free Drug Potency Prediction</h2>
-                        <p class="card-text">SandboxAQ has introduced AQAffinity, a new open-source AI model built on
-                            top of the OpenFold3 biomolecular co-folding framework to rapidly predict protein–ligand
-                            binding affinities without needing experimentally determined structures, addressing a major
-                            bottleneck in early-stage drug discovery. By enabling high-speed, structure-free affinity
-                            prediction, AQAffinity helps researchers quickly eliminate low-probability candidates and
-                            focus on promising molecules earlier in the process. The model is fully transparent and
-                            available under a permissive Apache 2.0 license, enhancing OpenFold3’s utility and
-                            accessibility for the open-source and biopharma research communities.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.sandboxaq.com/aqaffinity">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">The OpenFold Consortium Names Dr. Jan Domanski as Senior Science Lead to
-                            Drive the Next Generation of Open Source AI Models for Structural Biology and Drug
-                            Discovery</h2>
-                        <p class="card-text">The OpenFold Consortium announced that Dr. Jan Domanski has joined as
-                            Senior Science Lead. In this role, he’ll work with OpenFold’s technical leadership and
-                            community to advance open-source AI foundation models for structural biology and drug
-                            discovery. The announcement follows the preview release of OpenFold3 and outlines a next
-                            phase focused on building an open, modular stack that connects AI models with experimental
-                            and simulation data to improve robustness and generalization.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20251201501239/en/The-OpenFold-Consortium-Names-Dr.-Jan-Domanski-as-Senior-Science-Lead-to-Drive-the-Next-Generation-of-Open-Source-AI-Models-for-Structural-Biology-and-Drug-Discovery">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">OpenFold Consortium Releases Preview of OpenFold3: An Open-Source
-                            Foundation Model for Structure Prediction of Proteins, Nucleic Acids, and Drugs</h2>
-                        <p class="card-text">The OpenFold Consortium has released a preview of OpenFold3, an open-source
-                            foundation model that accurately predicts 3D structures of proteins and their interacting
-                            molecules including nucleic acids and small-molecule drugs, in silico. Built by an industry
-                            and academic consortium and licensed under Apache 2.0, OpenFold3 can be used, adapted, and
-                            fine-tuned for real-world pipelines across biotech, pharma, and materials science. With
-                            co-folding support and deployable NVIDIA NIM inference, the model underpins faster,
-                            lower-cost discovery—already drawing interest from leading organizations integrating it into
-                            internal R&D and product design.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20251028507233/en/OpenFold-Consortium-Releases-Preview-of-OpenFold3-An-Open-Source-Foundation-Model-for-Structure-Prediction-of-Proteins-Nucleic-Acids-and-Drugs">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">OpenFold Expands AI For Biological Modeling Mission with Two New
-                            Members</h2>
-                        <p class="card-text">The OpenFold Consortium has welcomed Apheris and Johnson & Johnson as its
-                            newest members, significantly strengthening its mission to develop open-source AI tools for
-                            biological modeling. Apheris contributes its privacy-preserving infrastructure, enabling
-                            secure AI training and benchmarking on proprietary data without compromising
-                            confidentiality. Meanwhile, Johnson & Johnson brings deep expertise in AI and biomedical
-                            research, further advancing the consortium’s goal of accelerating drug discovery with
-                            generalizable, clinically relevant models.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20250716399394/en/OpenFold-Expands-AI-for-Biological-Modeling-Mission-with-Two-New-Members">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">OpenFold AI Research Consortium Welcomes New Members Including Bristol
-                            Myers Squibb, COGNANO, Lambda, Novo Nordisk, Structure Therapeutics, Tamarind, Unnatural
-                            Products, and Visterra</h2>
-                        <p class="card-text">OpenFold, a non‑profit AI research consortium focused on open‑source
-                            software for biology and drug discovery, has announced the addition of eight new industry
-                            partners to its roster. These members bring diverse expertise, ranging from antibody
-                            discovery and small-molecule therapeutics to GPU cloud infrastructure and no-code
-                            bioinformatics platforms, all united in driving collaborative innovation in AI-powered drug
-                            development. With now 24 consortium partners, including six global pharma firms, OpenFold
-                            continues to scale its community and amplify the impact of its tools like OpenFold,
-                            OpenFold‑SoloSeq, and OpenFold‑Multimer .</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20250415351561/en/OpenFold-AI-Research-Consortium-Welcomes-New-Members-Including-Bristol-Myers-Squibb-COGNANO-Lambda-Novo-Nordisk-Structure-Therapeutics-Tamarind-Unnatural-Products-and-Visterra">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">How Novo Nordisk, Columbia University and AWS Collaborated to Create
-                            OpenFold3 with the OpenFold AI Consortium</h2>
-                        <p class="card-text">Novo Nordisk, Columbia University, AWS, and the OpenFold Consortium are
-                            partnering to build OpenFold3, a cutting-edge open‑source AI model for protein, nucleotide
-                            and ligand structure prediction. Leveraging AWS’s scalable and cost‑efficient cloud
-                            infrastructure, this team combined EC2 Capacity Blocks for ML and Spot Instances across 256
-                            GPUs, delivering an 85% cost saving over on‑demand pricing . The
-                            results are a highly efficient and scalable blueprint for large‑scale bioinformatics
-                            collaborations, accelerating protein‑based therapeutic research.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://aws.amazon.com/blogs/hpc/how-novo-nordisk-columbia-university-and-aws-collaborated-to-create-openfold3/">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">Who will make AlphaFold3 open source? Scientists race to crack AI
-                            model</h2>
-                        <p class="card-text">DeepMind's release of AlphaFold3 as a proprietary model has sent the
-                            scientific community racing to produce open-source alternatives. The OpenFold team has
-                            already begun coding an open-source version of AlphaFold3 that it hopes to complete this
-                            year. Creating open-source infrastructures of software that is fundamental to the ability
-                            to do drug discovery will help ensure accessibility to all scientists and promote human
-                            health. </p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.nature.com/articles/d41586-024-01555-x">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">AI, Computation, and the Folds of Life</h2>
-                        <p class="card-text">OpenFold has been developed to enhance protein structure prediction using
-                            AI and supercomputing power. OpenFold offers faster,
-                            memory-efficient predictions compared to alternative software, potentially transforming drug
-                            discovery and our understanding of disease. This advancement is open-source and trainable,
-                            allowing researchers to customize models with their own data.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://tacc.utexas.edu/news/latest-news/2024/08/13/ai-computation-and-the-folds-of-life/">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">OpenFold AI Research Consortium Welcomes Six New Members: Astex, Biogen,
-                            Congruence, Polaris Quantum, Psivant, and SandboxAQ</h2>
-                        <p class="card-text">The OpenFold AI Research Consortium, a non-profit focused on developing
-                            open-source AI tools for drug discovery, has expanded by adding six new members: Astex,
-                            Biogen, Congruence, Polaris Quantum, Psivant, and SandboxAQ. These companies bring expertise
-                            in fields like quantum computing, small molecule therapeutics, and AI-driven drug design,
-                            enhancing OpenFold's mission to advance healthcare innovation. The consortium aims to
-                            accelerate the development of transformative medicines through collaborative efforts and
-                            cutting-edge technologies.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20240813538795/en/OpenFold-AI-Research-Consortium-Welcomes-Six-New-Members-Astex-Biogen-Congruence-Polaris-Quantum-Psivant-and-SandboxAQ">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">AI is boosting drug discovery and development — and sparking questions
-                            about proprietary data</h2>
-                        <p class="card-text">Pharma companies are investing in consortiums such as the Seattle-based
-                            OpenFold to promote
-                            development of open-source AI models for biology and drug discovery. Proprietary data may be
-                            a differentiator for
-                            companies tapping into an increasing number of open-source AI models according to panelists
-                            at the 2024 Life Science
-                            Innovation Northwest meeting.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.geekwire.com/2024/ai-is-boosting-drug-discovery-and-development-and-sparking-questions-about-proprietary-data/">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">OpenFold Biotech AI Research Consortium releases SoloSeq and Multimer, an
-                            integrated protein Large Language Model with 3D structure generation</h2>
-                        <p class="card-text">OpenFold, a non-profit artificial intelligence (AI) research consortium,
-                            today announced the
-                            release of two new tools: 1) SoloSeq, which integrates a new protein Large Language Model
-                            (LLM) with its OpenFold
-                            structure prediction software, and 2) OpenFold-Multimer software, which creates higher
-                            quality models of
-                            protein/protein complexes than OpenFold alone.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20240219658831/en/">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">OpenFold AI Research Consortium Announces Funding of Protein Data
-                            Collection at Prof. Gabriel Rocklin’s Laboratory at Northwestern University</h2>
-                        <p class="card-text">The OpenFold group, a non-profit artificial intelligence (AI) research
-                            consortium of biotech
-                            and tech firms whose goal is to develop free and open-source software tools for biology and
-                            drug discovery,
-                            is announcing the funding of new large-scale protein studies at Prof. Gabriel Rocklin’s
-                            laboratory at Northwestern University.
-                            Read the full story in Business Wire.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20231002433534/en/">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">OpenFold AI Research Consortium Welcomes Three New Members: UCB, NVIDIA
-                            and Valence Labs</h2>
-                        <p class="card-text">OpenFold, a non-profit artificial intelligence (AI) research consortium
-                            whose goal is to develop
-                            free and open-source software tools for biology and drug discovery, today announced the
-                            addition of three new
-                            industry members: UCB, NVIDIA, and Valence Labs (powered by Recursion). Read the full story
-                            in Business Wire.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20230912365077/en/OpenFold-AI-Research-Consortium-Welcomes-Three-New-Members-UCB-NVIDIA-and-Valence-Labs/">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">OpenFold Welcomes Bayer, Dassault, CHARM Therapeutics and BaseCamp
-                            Research</h2>
-                        <p class="card-text">OpenFold, a non-profit artificial intelligence (AI) research consortium
-                            whose goal is to develop free and open source software
-                            tools for biology and drug discovery, today announced the addition of four new industry
-                            members: Bayer, Dassault Systèmes, CHARM Therapeutics,
-                            and BaseCamp Research Ltd. Read the full story in Business Wire.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20221122005163/en/%C2%A0OpenFold-AI-Research-Consortium-Welcomes-4-New-Members-Bayer-Dassault-CHARM-Therapeutics-and-BaseCamp-Research">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">Announcing OpenFold</h2>
-                        <p class="card-text">A set of leading academic and industry partners are announcing the
-                            formation of OpenFold, a non-profit artificial intelligence (AI)
-                            research consortium of organizations whose goal is to develop free and open source software
-                            tools for biology and drug discovery. OpenFold is a project
-                            of the Open Molecular Software Foundation (OMSF), a non-profit organization advancing
-                            molecular sciences by building communities for open source research
-                            software development. Read the full story in Business Wire.</p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://www.businesswire.com/news/home/20220628005101/en/Academic-Industry-Leaders-Form-OpenFold-AI-Research-Consortium-to-Develop-Open-Source-Software-Tools-To-Understand-Biological-Systems-and-Discover-New-Medicines">Read
-                        more</a></div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <h2 class="card-title">Interview with Gustaf Ahdritz in TechCrunch</h2>
-                        <p class="card-text">Gustaf Ahdritz is the PhD student in the <a href="https://www.aqlab.io/">Al
-                            Quraishi lab</a> at Columbia University and one of the lead
-                            developers of OpenFold. He shares his thoughts in this TechCrunch piece on the value of open
-                            source and community in science, AI models and why OpenFold
-                            came about when AlphaFold2 is already out there. </p>
-                    </div>
-                    <div class="card-footer"><a class="btn text-white fold-button"
-                                                href="https://techcrunch.com/2022/05/19/when-big-ai-labs-refuse-to-open-source-their-models-the-community-steps-in/">Read
-                        more</a></div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
-<div id="teamarea" class="teamarea py-3 bg-light">
-    <div class="container px-4 px-lg-5">
-        <!-- Content Row-->
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">Our Team</h1>
-            </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 d-flex justify-content-center pt-5">
-            <h2 class="card-title">OpenFold Investigators</h2>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/MAlQuraishi.jpg" alt="Prof. Mohammed AlQuraishi">
-                            </div>
-                            <div class="name">
-                                Professor Mohammed AlQuraishi, PhD<br>
-                                Columbia University
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/GRocklin.jpg" alt="Prof. Gabriel Rocklin">
-                            </div>
-                            <div class="name">
-                                Professor Gabriel Rocklin, PhD<br>
-                                Northwestern University
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/IPD.png" alt="IPD">
-                            </div>
-                            <div class="name">
-                                Institute for Protein Design<br>
-                                Led by Prof. David Baker
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 d-flex justify-content-center pt-5">
-            <h2 class="card-title">OpenFold Advisors</h2>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/NBouatta.jpg" alt="Nazim Bouatta, PhD">
-                            </div>
-                            <div class="name">
-                                Nazim Bouatta, PhD<br>
-                                Senior Research Fellow
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/TKurtzman.jpg" alt="Prof. Tom Kurtzman">
-                            </div>
-                            <div class="name">
-                                Professor Tom Kurtzman, PhD<br>
-                                Lehman College
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 d-flex justify-content-center pt-5">
-            <h2 class="card-title">OpenFold Team</h2>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/JWei.png" alt="Jennifer Wei, PhD">
-                            </div>
-                            <div class="name">
-                                Jennifer Wei, PhD<br>
-                                Senior Deep Learning Software Engineer
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/MTollefson.jpg" alt="Mallory Tollefson, PhD">
-                            </div>
-                            <div class="name">
-                                Mallory Tollefson, PhD<br>
-                                Business and Project Manager
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/JDomanski.jpg" alt="Jan Domanski, PhD">
-                            </div>
-                            <div class="name">
-                                Jan Domanski, PhD<br>
-                                Lead Scientist
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 d-flex justify-content-center pt-5">
-            <h2 class="card-title">OpenFold Fellows</h2>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/LJarosch.jpg" alt="Lukas Jarosch">
-                            </div>
-                            <div class="name">
-                                Lukas Jarosch<br>
-                                Graduate Student
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/CFloristean.jpg" alt="Christina Floristean">
-                            </div>
-                            <div class="name">
-                                Christina Floristean<br>
-                                Graduate Student
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 d-flex justify-content-center pt-5">
-            <h2 class="card-title">OpenFold Contributors</h2>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/SRamsey.jpg" alt="Steven Ramsey">
-                            </div>
-                            <div class="name">
-                                Steven Ramsey, PhD<br>
-                                Director of Research, Kurtzman Laboratory
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/TLitberg.jpg" alt="Ted Litberg, PhD">
-                            </div>
-                            <div class="name">
-                                Ted Litberg, PhD<br>
-                                Postdoctoral Research Scholar, Rocklin Laboratory
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/VSwamy.jpg" alt="Vinay Swamy">
-                            </div>
-                            <div class="name">
-                                Vinay Swamy<br>
-                                Graduate Student, AlQuraishi Laboratory
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/GNikolenyi.jpg" alt="Gergo Nikolenyi">
-                            </div>
-                            <div class="name">
-                                Gergo Nikolenyi<br>
-                                Graduate Student, AlQuraishi Laboratory
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/IShamir.jpg" alt="Itamar Shamir, PhD">
-                            </div>
-                            <div class="name">
-                                Itamar Shamir, PhD<br>
-                                Postdoctoral Research Scholar, AlQuraishi Laboratory
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/YLin.jpg" alt="Yeqing Lin">
-                            </div>
-                            <div class="name">
-                                Yeqing Lin<br>
-                                Graduate Student, AlQuraishi Laboratory
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/CKalicki.jpg" alt="Colin Kalicki">
-                            </div>
-                            <div class="name">
-                                Colin Kalicki<br>
-                                Graduate Student, AlQuraishi Laboratory
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/GZhong.jpg" alt="Guojie Zhong">
-                            </div>
-                            <div class="name">
-                                Guojie Zhong<br>
-                                Graduate Student, AlQuraishi Laboratory
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/ARoncoli.jpg" alt="Andrea Roncoli">
-                            </div>
-                            <div class="name">
-                                Andrea Roncoli<br>
-                                Graduate Student, AlQuraishi Laboratory
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/AQabel.jpg" alt="Aymen Qabel">
-                            </div>
-                            <div class="name">
-                                Aymen Qabel<br>
-                                Graduate Student, AlQuraishi Laboratory
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/CRochereau.png" alt="Charlotte Rochereau">
-                            </div>
-                            <div class="name">
-                                Charlotte Rochereau<br>
-                                Graduate Student, AlQuraishi Laboratory
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 d-flex justify-content-center pt-5">
-            <h2 class="card-title">Executive Committee</h2>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/WSherman.jpg" alt="Woody Sherman, PhD">
-                            </div>
-                            <div class="name">
-                                Woody Sherman, PhD<br>
-                                OpenFold Chairperson<br>
-                                Chief Innovation Officer<br>
-                                Psivant Therapeutics
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/BWeitzner.jpg" alt="Brian Weitzner, PhD">
-                            </div>
-                            <div class="name">
-                                Brian Weitzner, PhD<br>
-                                OpenFold Vice Chairperson<br>
-                                Director of Computational and Structural Biology<br>
-                                Outpace Bio
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/CTaylor.jpg" alt="Christina Taylor, PhD">
-                            </div>
-                            <div class="name">
-                                Christina Taylor, PhD<br>
-                                OpenFold Treasurer<br>
-                                Senior Science Fellow and Computational Molecular Design Lead <br>
-                                Bayer Crop Science
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/LNivon.jpg" alt="Lucas Nivon, PhD">
-                            </div>
-                            <div class="name">
-                                Lucas Nivon, PhD<br>
-                                CEO and Co-Founder<br>
-                                Cyrus Biotechnology
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/PClark.png" alt="Peter Clark, PhD">
-                            </div>
-                            <div class="name">
-                                Peter Clark, PhD<br>
-                                Vice President, Digital Chemistry & Design<br>
-                                Novo Nordisk, RDUS
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/AZanghellini.jpg" alt="Alexandre Zanghellini, PhD">
-                            </div>
-                            <div class="name">
-                                Alexandre Zanghellini, PhD<br>
-                                Co-Founder and CEO
-                                Arzeda Corp
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row gx-4 gx-lg-5 d-flex justify-content-center pt-5">
-            <h2 class="card-title">Technical Advisory Council</h2>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/ZBeckwith.jpg" alt="Zane Beckwith, PhD">
-                            </div>
-                            <div class="name">
-                                Zane Beckwith, PhD<br>
-                                Technical Lead for Drug Discovery R&D<br>
-                                Sandbox AQ
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/ABordner.jpg" alt="Andrew Bordner, PhD">
-                            </div>
-                            <div class="name">
-                                Andrew Bordner, PhD<br>
-                                Senior Principal Scientist<br>
-                                Bristol Myers Squibb
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/OpenFold.jpg" alt="Benedek Fabian, PhD">
-                            </div>
-                            <div class="name">
-                                Benedek Fabian, PhD<br>
-                                Senior ML Engineer<br>
-                                CHARM Therapeutics
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/OpenFold.jpg" alt="Reed Harrison, PhD">
-                            </div>
-                            <div class="name">
-                                Reed Harrison, PhD<br>
-                                R&D Software Engineering Manager<br>
-                                Dassault Systèmes BIOVIA
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/AHillisch.png" alt="Alexander Hillisch, PhD">
-                            </div>
-                            <div class="name">
-                                Alexander Hillisch, PhD<br>
-                                Head of Global CADD<br>
-                                UCB BioSciences
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/SKashefOlGheta.png" alt="Sadra Kashef Ol Gheta, PhD">
-                            </div>
-                            <div class="name">
-                                Sadra Kashef Ol Gheta, PhD<br>
-                                Senior Computational Chemist<br>
-                                Bayer AG
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/OpenFold.jpg" alt="Sebastian Kelm, PhD">
-                            </div>
-                            <div class="name">
-                                Sebastian Kelm, PhD<br>
-                                Senior Principal Scientist<br>
-                                UCB BioSciences
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/PLemos.jpg" alt="Pablo Lemos, PhD">
-                            </div>
-                            <div class="name">
-                                Pablo Lemos, PhD<br>
-                                Staff Research Scientist, Machine Learning & Biopharma <br>
-                                Sandbox AQ
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/SLewis.png" alt="Steven Lewis, PhD">
-                            </div>
-                            <div class="name">
-                                Steven Lewis, PhD<br>
-                                Computational Discovery Manager<br>
-                                Cyrus Biotechnology
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/OpenFold.jpg" alt="Yifan Song, PhD">
-                            </div>
-                            <div class="name">
-                                Yifan Song, PhD<br>
-                                CSO and Co-Founder<br>
-                                Cyrus Biotechnology
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/CTaylor.jpg" alt="Christina Taylor, PhD">
-                            </div>
-                            <div class="name">
-                                Christina Taylor, PhD<br>
-                                Senior Science Fellow and Computational Molecular Design Lead<br>
-                                Bayer Crop Science
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/OpenFold.jpg" alt="Rich Taylor, PhD">
-                            </div>
-                            <div class="name">
-                                Rich Taylor, PhD<br>
-                                Director of CADD<br>
-                                UCB Pharma
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/SVillalba.png" alt="Santiago Villalba, PhD">
-                            </div>
-                            <div class="name">
-                                Santiago Villalba, PhD<br>
-                                Machine Learning Expert for Biomolecules<br>
-                                Bayer AG
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <div class="profile-container">
-                            <div class="circular-image">
-                                <img src="./assets/teamMembers/YWang.png" alt="Ye Wang, PhD">
-                            </div>
-                            <div class="name">
-                                Ye Wang, PhD<br>
-                                Senior Scientist, Machine Learning<br>
-                                Biogen
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="projectarea" class="projectarea">
-    <div class="container py-3">
-        <!-- Main Heading (Projects) -->
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center mb-0">Projects</h1>
-            </div>
-        </div>
-
-        <!-- Our Work Section -->
-        <div class="container pt-3">
-            <h2 class="card-title text-left mb-4">Our Work</h2>
-
-            <!-- First Row of Cards (2 cards per row) -->
-            <div class="row gx-4 gx-lg-5 mb-4">
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">OpenFold</h4>
-                            <p class="card-text">Our model, inspired by AlphaFold2, is available
-                                <a href="https://openfold.readthedocs.io/en/latest/Inference.html">here</a>
-                                with
-                                <a href="https://openfold.readthedocs.io/en/latest/Training_OpenFold.html">training
-                                    documentation.</a> Our inference code is available under a permissive license.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">OpenFold-Multimer</h4>
-                            <p class="card-text">Our model, inspired by AlphaFold-Multimer, is available
-                                <a href="https://openfold.readthedocs.io/en/latest/Multimer_Inference.html">here.</a>
-                                Development of next-generation model weights is currently underway.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Second Row of Cards (2 cards per row) -->
-            <div class="row gx-4 gx-lg-5 mb-4">
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">OpenFold-SoloSeq</h4>
-                            <p class="card-text">Our OpenFold-SoloSeq inference code is available
-                                <a href="https://openfold.readthedocs.io/en/latest/Single_Sequence_Inference.html">here.</a>
-                                OpenFold-SoloSeq predicts protein structures equivalent to the OpenFold model with no
-                                MSA input required.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">OpenFold-SmallMolecule</h4>
-                            <p class="card-text">OpenFold-SmallMolecule is currently under development by our employees
-                                and contributors.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Third Row with Centered Card -->
-            <div class="row gx-4 gx-lg-5 mb-4 d-flex justify-content-center">
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4 text-center">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">OpenStability</h4>
-                            <p class="card-text">OpenStability will provide enhanced <a
-                                    href="https://www.nature.com/articles/s41586-023-06328-6">mega-scale</a> protein
-                                stability data. This project is underway in Prof. Gabriel Rocklin's laboratory and
-                                includes an extension to larger protein domains.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Related Work Section -->
-        <div class="container pt-3">
-            <h2 class="card-title text-left mb-4">Built Using OpenFold</h2>
-
-            <!-- First Row of Cards (2 cards per row) -->
-            <div class="row gx-4 gx-lg-5 mb-4">
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">AQAffinity</h4>
-                            <p class="card-text">AQAffinity available
-                                <a href="https://huggingface.co/SandboxAQ/AQAffinity" target="_blank"
-                                   rel="noopener noreferrer">here.</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">ApherisFold</h4>
-                            <p class="card-text">ApherisFold is available
-                                <a href="https://try.fold.apheris.net/"
-                                   target="_blank" rel="noopener noreferrer">here.</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Second Row of Cards (2 cards per row) -->
-            <div class="row gx-4 gx-lg-5 mb-4">
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">ESMFold</h4>
-                            <p class="card-text">ESM Fold is available
-                                <a href="https://github.com/facebookresearch/esm" target="_blank"
-                                   rel="noopener noreferrer">here.</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">MLPerf</h4>
-                            <p class="card-text">MLPerf is available
-                                <a href="https://mlcommons.org/2023/11/mlperf-training-v3-1-hpc-v3-0-results/"
-                                   target="_blank" rel="noopener noreferrer">here.</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Third Row of Cards (2 cards per row) -->
-            <div class="row gx-4 gx-lg-5 mb-4">
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">AlphaLink</h4>
-                            <p class="card-text">Information on AlphaLink is available
-                                <a href="https://www.nature.com/articles/s41587-023-01704-z" target="_blank"
-                                   rel="noopener noreferrer">here.</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">AlphaFlow</h4>
-                            <p class="card-text">An ArXIV article on AlphaFlow is available
-                                <a href="https://arxiv.org/pdf/2402.04845" target="_blank" rel="noopener noreferrer">here.</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Third Row with Centered Card -->
-            <div class="row gx-4 gx-lg-5 mb-4 d-flex justify-content-center">
-                <div class="col-xs-12 col-md-6 col-lg-6 mb-4 text-center">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h4 class="card-title">DEERFold</h4>
-                            <p class="card-text">An article on DEERFold is available
-                                <a href="https://www.biorxiv.org/content/10.1101/2024.10.30.621127v1" target="_blank"
-                                   rel="noopener noreferrer">here.</a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="membersarea" class="membersarea p-5 bg-light">
-    <div class="container-fluid px-5">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">Members</h1>
-            </div>
-        </div>
-
-        <div class="members row text-center py-5 d-flex justify-content-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.abiologics.com/"><img class="img-fluid sponsor-logo-img"
-                                                           src="./assets/images/abiologics.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.aalphabio.com/"><img class="img-fluid sponsor-logo-img"
-                                                          src="./assets/images/aalphabio.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.absci.com/"><img class="img-fluid sponsor-logo-img"
-                                                      src="./assets/images/absci.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://achira.ai/"><img class="img-fluid sponsor-logo-img"
-                                                  src="./assets/images/achira.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.adaptivebiotech.com/"><img class="img-fluid sponsor-logo-img"
-                                                                src="./assets/images/adaptivebiotech.png"></a>
-            </div>
-        </div>
-
-        <div class="members row text-center py-5 d-flex justify-content-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.apheris.com/"><img class="img-fluid sponsor-logo-img"
-                                                        src="./assets/images/apheris.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.arzeda.com/"><img class="img-fluid sponsor-logo-img"
-                                                       src="./assets/images/arzeda.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://astx.com/"><img class="img-fluid sponsor-logo-img" src="./assets/images/astex.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.basecamp-research.com/"><img class="img-fluid sponsor-logo-img"
-                                                                  src="./assets/images/basecamp.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.bayer.com/"><img class="img-fluid sponsor-logo-img"
-                                                      src="./assets/images/bayer.png"></a>
-            </div>
-        </div>
-
-        <div class="members row text-center py-5 d-flex justify-content-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.benchling.com/"><img class="img-fluid sponsor-logo-img"
-                                                          src="./assets/images/benchling.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.biogen.com/"><img class="img-fluid sponsor-logo-img"
-                                                       src="./assets/images/biogen.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.bms.com/"><img class="img-fluid sponsor-logo-img"
-                                                    src="./assets/images/BMS.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://charmtx.com/"><img class="img-fluid sponsor-logo-img" src="./assets/images/charm.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://cognanous.com/"><img class="img-fluid sponsor-logo-img"
-                                                      src="./assets/images/cognano.png"></a>
-            </div>
-        </div>
-
-        <div class="members row text-center py-5 d-flex justify-content-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://congruencetx.com/"><img class="img-fluid sponsor-logo-img"
-                                                         src="./assets/images/congruence.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://cyrusbio.com/"><img class="img-fluid sponsor-logo-img" src="./assets/images/cyrus.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.3ds.com/"><img class="img-fluid sponsor-logo-img"
-                                                    src="./assets/images/dassault.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.daiichisankyo.com/"><img class="img-fluid sponsor-logo-img"
-                                                       src="./assets/images/dyno.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.dynotx.com/"><img class="img-fluid sponsor-logo-img"
-                                                       src="./assets/images/daiichisankyo.jpg"></a>
-            </div>
-        </div>
-
-        <div class="members row text-center py-5 d-flex justify-content-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.flagshippioneering.com/"><img class="img-fluid sponsor-logo-img"
-                                                                   src="./assets/images/flagship.jpg"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.jnj.com/"><img class="img-fluid sponsor-logo-img"
-                                                    src="./assets/images/JohnsonAndJohnson.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://kiin.bio/"><img class="img-fluid sponsor-logo-img"
-                                                 src="./assets/images/kiin.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://lambdalabs.com/"><img class="img-fluid sponsor-logo-img"
-                                                       src="./assets/images/lambda.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://nanome.ai/"><img class="img-fluid sponsor-logo-img"
-                                                  src="./assets/images/Nanome.jpg"></a>
-            </div>
-        </div>
-
-        <div class="members row text-center py-5 d-flex justify-content-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.novonordisk.com/"><img class="img-fluid sponsor-logo-img"
-                                                            src="./assets/images/NovoNordisk.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.nxera.life/"><img class="img-fluid sponsor-logo-img"
-                                                       src="./assets/images/nxera.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.outpacebio.com/"><img class="img-fluid sponsor-logo-img"
-                                                           src="./assets/images/outpace.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://pledge-tx.com/"><img class="img-fluid sponsor-logo-img"
-                                                      src="./assets/images/pledge.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://polarisqb.com/"><img class="img-fluid sponsor-logo-img"
-                                                      src="./assets/images/PolarisQB_Logo.png"></a>
-            </div>
-        </div>
-
-        <div class="members row text-center py-5 d-flex justify-content-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.protein-evolution.com/"><img class="img-fluid sponsor-logo-img"
-                                                                  src="./assets/images/proteinevolution.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://psithera.com/"><img class="img-fluid sponsor-logo-img"
-                                                     src="./assets/images/PsiThera.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://puxano.com/"><img class="img-fluid sponsor-logo-img" src="./assets/images/puxano.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.roche.com/"><img class="img-fluid sponsor-logo-img"
-                                                      src="./assets/images/roche.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://structuretx.com/"><img class="img-fluid sponsor-logo-img"
-                                                        src="./assets/images/SandboxAQ.png"></a>
-            </div>
-        </div>
-
-        <div class="members row text-center py-5 d-flex justify-content-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.sandboxaq.com/"><img class="img-fluid sponsor-logo-img"
-                                                          src="./assets/images/StructureTherapeutics.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.tamarind.bio/"><img class="img-fluid sponsor-logo-img"
-                                                         src="./assets/images/Tamarind.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.ucb.com/"><img class="img-fluid sponsor-logo-img"
-                                                    src="./assets/images/ucb.jpeg"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.unnaturalproducts.com/"><img class="img-fluid sponsor-logo-img"
-                                                                  src="./assets/images/UnnaturalProducts.png"></a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://www.valencelabs.com/"><img class="img-fluid sponsor-logo-img"
-                                                            src="./assets/images/valence.png"></a>
-            </div>
-        </div>
-
-        <div class="members row text-center py-5 d-flex justify-content-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-2 align-items-center justify-content-center flex-column">
-                <a href="https://visterrainc.com/"><img class="img-fluid sponsor-logo-img"
-                                                        src="./assets/images/visterra.png"></a>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="faq" class="faq p-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">FAQ</h1>
-            </div>
-        </div>
-        <div class="row pt-lg-5 pt-sm-3">
-            <div class="offset-2 col-8 text-center">
-                <h4>What is the mission of the OpenFold Consortium?</h4>
-                <p class="pb-5">Our goal is to develop an open ecosystem of accelerated AI for Biology tools in order to
-                    catalyze innovation, starting with state-of-the-art and permissively licensed protein structure
-                    prediction training and inference pipelines and models.</p>
-
-                <h4>Who are the members?</h4>
-                <p class="pb-5">The founding members of the consortium span academia, technology corporations, startups,
-                    and pharmaceutical companies. The launching group includes the <a href="https://www.aqlab.io/">AlQuraishi
-                        lab at Columbia University</a>, <a href="https://www.arzeda.com/">Arzeda</a>, <a
-                            href="https://cyrusbio.com/">Cyrus Biotechnology</a> and <a
-                            href="https://www.outpacebio.com/">Outpace Bio</a> with many more who've joined since
-                    founding, so stay tuned and
-                    get in touch! The OpenFold Consortium is a supported project of the <a href="https://omsf.io">Open
-                        Molecular
-                        Software Foundation</a>.
-                </p>
-                <h4>Who can join and how can we join the mission?</h4>
-                <p class="pb-5">All are welcome! Member organizations are expected to commit resources to our shared
-                    goals and mission. Many types of contributions are welcome, including but not limited to in-kind,
-                    FTE, or monetary support. If this is you and your organization, please get in touch by reaching out
-                    to info-at-openfold.io</a>.
-                </p>
-                <h4>Where are code and models available?</h4>
-                <p class="pb-5">Our OpenFold suite of protein structure prediction tools is available today on our <a
-                        href="https://github.com/aqlaboratory/openfold">GitHub</a>! OpenFold is our core platform
-                    designed for high-accuracy protein folding predictions. Also available is OpenFold-SoloSeq, which
-                    extends OpenFold capabilities by eliminating the need to pre-compute Multiple Sequence Alignments.
-                    Additionally, OpenFold-Multimer is available and enables modeling of protein-protein interactions
-                    and multimeric complexes. At the OpenFold Consortium, development of OpenFold-Ligand is underway to
-                    support the prediction of protein-ligand interactions. Explore our comprehensive training and
-                    inference code to leverage these open source tools for your scientific interests. OpenFold training
-                    data is available in the <a href="https://registry.opendata.aws/">Registry of Open Data on AWS</a>
-                    (RODA) thanks to their <a href="https://aws.amazon.com/opendata/open-data-sponsorship-program/">Open
-                        Data Sponsorship Program</a>.
-                </p>
-                <h4>Is documentation available for the OpenFold software suite?</h4>
-                <p class="pb-5">Yes! Our developers provide extensive documentation including guides on setting up and
-                    training each of the tools in our OpenFold suite. Documentation can be found <a
-                            href="https://openfold.readthedocs.io/en/latest/">here</a>. We also have a blog with regular
-                    updates posted on <a href="https://openfold.ghost.io/">Ghost</a>.
-                </p>
-
-            </div>
-        </div>
-    </div>
-</div>
-<div id="foundersarea" class="membersarea py-5 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">Founders</h1>
-            </div>
-        </div>
-
-        <div class="members row text-center py-5 d-flex justify-content-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
-                <a href="https://www.arzeda.com/">
-                    <img class="img-fluid sponsor-logo-img" src="./assets/images/arzeda.png">
-                </a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
-                <a href="https://cyrusbio.com/">
-                    <img class="img-fluid sponsor-logo-img" src="./assets/images/cyrus.png">
-                </a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
-                <a href="https://www.outpacebio.com/">
-                    <img class="img-fluid sponsor-logo-img" src="./assets/images/outpace.png">
-                </a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-between flex-column">
-                <a href="https://www.prescient.design/">
-                    <img class="img-fluid sponsor-logo-img" src="./assets/images/prescient.png">
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="supportersarea" class="supportersarea p-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1 class="text-center">Supported by</h1>
-            </div>
-        </div>
-
-        <!-- First row: 3 logos -->
-        <div class="supporters row text-center py-5 d-flex justify-content-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
-                <a class="d-inline-block h-100" href="https://omsf.io/">
-                    <img class="img-fluid sponsor-logo-img" src="./assets/images/omsf.png">
-                </a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
-                <a class="d-inline-block h-100" href="https://aws.amazon.com/what-is-cloud-computing">
-                    <img class="img-fluid sponsor-logo-img" src="https://d0.awsstatic.com/logos/powered-by-aws.png"
-                         alt="Powered by AWS Cloud Computing">
-                </a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-3 align-items-center justify-content-center flex-column">
-                <a class="d-inline-block h-100" href="https://www.microsoft.com/en-us/research/project/deepspeed/">
-                    <img class="img-fluid sponsor-logo-img" src="./assets/images/microsoft.png"
-                         alt="The Microsoft Logo">
-                </a>
-            </div>
-        </div>
-
-        <!-- Second row: 2 logos -->
-        <!-- Second row: 2 logos, horizontally aligned -->
-        <div class="supporters row text-center py-2 d-flex justify-content-center align-items-center">
-            <div class="d-flex col-xs-12 col-md-6 col-lg-3 justify-content-center align-items-center">
-                <a class="d-inline-block" href="https://www.nvidia.com/">
-                    <img class="img-fluid sponsor-logo-img" src="./assets/images/nvidia.png" alt="NVIDIA">
-                </a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-3 justify-content-center align-items-center">
-                <a class="d-inline-block" href="https://levitate.bio/">
-                    <img class="img-fluid sponsor-logo-img" src="./assets/images/levitate.png" alt="Levitate">
-                </a>
-            </div>
-            <div class="d-flex col-xs-12 col-md-6 col-lg-3 justify-content-center align-items-center">
-                <a class="d-inline-block" href="https://chanzuckerberg.com/">
-                    <img class="img-fluid sponsor-logo-img" src="./assets/images/CZI_Logo.png" alt="CZI">
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-<footer class="text-white bg-dark py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <h4 class="text-white">About us</h4>
-                <p>OpenFold is a non-profit AI research and development consortium developing free and open-source
-                    software tools for biology and drug discovery hosted by the Open Molecular Software Foundation.</p>
-            </div>
-            <div class="col-lg-6">
-                <h4 class="text-white">Social Media</h4>
-                <div>
-                    <p>
-                        <a href="https://www.linkedin.com/company/openfold" class="fa-icon">
-                            <i class="fab fa-linkedin" aria-hidden="true"></i>
-                        </a>
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        <a href="https://bsky.app/profile/openfold.io" class="fa-icon">
-                            <img src="assets/images/Bluesky.png"
-                                 alt="Bluesky" width="24" height="24" style="vertical-align: middle;">
-                        </a>
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        <a href="https://twitter.com/open_fold" class="fa-icon">
-                            <i class="fab fa-twitter" aria-hidden="true"></i>
-                        </a>
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        <small>© 2025 OpenFold
-                        </small>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="site-footer__bottom">© 2026 OpenFold Consortium</div>
+  </div>
 </footer>
 
-<!-- ===================== NEWSLETTER MODAL ===================== -->
-<div class="newsletter-modal" id="newsletterModal" hidden>
-    <div class="newsletter-modal__overlay" data-newsletter-close></div>
-    <div class="newsletter-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="newsletterModalTitle">
-        <div class="newsletter-modal__head">
-            <h2 id="newsletterModalTitle">OpenFold Community Update</h2>
-            <div class="newsletter-modal__actions">
-                <a class="btn text-white fold-button btn-sm" href="assets/newsletters/OpenFold_Community_Update.pdf"
-                   target="_blank" rel="noopener noreferrer">Open in new tab</a>
-                <button class="newsletter-modal__close" type="button" aria-label="Close" data-newsletter-close>&times;</button>
-            </div>
-        </div>
-        <iframe class="newsletter-modal__frame" title="OpenFold Community Update newsletter"
-                src="assets/newsletters/OpenFold_Community_Update.pdf"></iframe>
+<!-- ===================== CONTACT MODAL ===================== -->
+<div class="contact-modal" id="contactModal" hidden>
+  <div class="contact-modal__overlay" data-contact-close></div>
+  <div class="contact-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <button class="contact-modal__close" type="button" aria-label="Close" data-contact-close>&times;</button>
+    <h3 id="contactModalTitle">Get in touch</h3>
+    <p>Reach the OpenFold team at the address below.</p>
+    <div class="contact-modal__email">
+      <span class="contact-modal__address mono">info@openfold.io</span>
+      <button class="btn btn--primary btn--sm" type="button" id="contactCopyBtn">Copy</button>
     </div>
+  </div>
 </div>
 
-<script>
-    (function () {
-        const modal = document.getElementById("newsletterModal");
-        if (!modal) return;
-        let lastFocus = null;
-
-        function open() {
-            lastFocus = document.activeElement;
-            modal.hidden = false;
-            document.body.style.overflow = "hidden";
-            const closeBtn = modal.querySelector(".newsletter-modal__close");
-            if (closeBtn) closeBtn.focus();
-        }
-
-        function close() {
-            modal.hidden = true;
-            document.body.style.overflow = "";
-            if (lastFocus && lastFocus.focus) lastFocus.focus();
-        }
-
-        document.querySelectorAll("[data-newsletter]").forEach(function (el) {
-            el.addEventListener("click", function (e) {
-                e.preventDefault();
-                open();
-            });
-        });
-
-        modal.querySelectorAll("[data-newsletter-close]").forEach(function (el) {
-            el.addEventListener("click", close);
-        });
-
-        document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape" && !modal.hidden) close();
-        });
-    })();
-</script>
+<script src="js/nav.js"></script>
+<script src="js/members.js"></script>
+<script src="js/contact.js"></script>
 </body>
-
 </html>
