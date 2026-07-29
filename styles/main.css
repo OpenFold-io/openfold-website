@@ -494,6 +494,37 @@ main {
   background: radial-gradient(400px 200px at 100% 0%, rgba(59, 130, 246, 0.12), transparent 70%);
 }
 
+/* Event brand mark, pinned to the card's top-right corner. The white tile
+   matches .logo-cell, since partner marks are dark artwork on a dark theme. */
+.spotlight-card--branded {
+  padding-right: 6.5rem;
+}
+
+.spotlight-card__logo {
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0.75rem;
+  background-color: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.spotlight-card__logo img {
+  height: 56px;
+  width: auto;
+}
+
+/* Cards only get wide enough for the full-size mark past the 2-up grid */
+@media (min-width: 1024px) {
+  .spotlight-card--branded { padding-right: 7.5rem; }
+  .spotlight-card__logo img { height: 72px; }
+}
+
 /* ==========================================================================
    Team
    ========================================================================== */
