@@ -16,6 +16,7 @@
     { img: 'absci.png',               alt: 'Absci',             url: 'https://www.absci.com/' },
     { img: 'achira.png',              alt: 'Achira',            url: 'https://achira.ai/' },
     { img: 'adaptivebiotech.png',     alt: 'Adaptive Biotechnologies', url: 'https://www.adaptivebiotech.com/' },
+    { img: 'amd.jpg',                 alt: 'AMD',               url: 'https://www.amd.com/' },
     { img: 'apheris.png',             alt: 'Apheris',           url: 'https://www.apheris.com/' },
     { img: 'arzeda.png',              alt: 'Arzeda',            url: 'https://www.arzeda.com/' },
     { img: 'astex.png',               alt: 'Astex',             url: 'https://astx.com/' },
