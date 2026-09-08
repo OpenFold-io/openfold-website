@@ -24,6 +24,7 @@
     { img: 'bayer.png',               alt: 'Bayer',             url: 'https://www.bayer.com/' },
     { img: 'benchling.png',           alt: 'Benchling',         url: 'https://www.benchling.com/' },
     { img: 'biogen.png',              alt: 'Biogen',            url: 'https://www.biogen.com/' },
+    { img: 'boltzmann.png',           alt: 'Boltzmann Labs',    url: 'https://boltzmann.co/' },
     { img: 'BMS.png',                 alt: 'Bristol Myers Squibb', url: 'https://www.bms.com/' },
     { img: 'charm.png',               alt: 'CHARM Therapeutics', url: 'https://charmtx.com/' },
     { img: 'cognano.png',             alt: 'COGNANO',           url: 'https://cognanous.com/' },
