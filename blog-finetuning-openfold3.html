@@ -137,7 +137,7 @@ ccd_file: {dataset_dir}/merged_cifs/reference_data/components_harmonized.cif</co
     --runner_yaml "${RUNNER_YAML}" \
     --seed "${SEED}"</code></pre>
 
-          <p>Here, we fine-tune OpenFold3-p2 on the 79 fragment-bound structures for 1,000 steps using a batch size of 8, a learning rate of 1e-3, and a 100-step linear warmup. This takes approximately eight hours on eight NVIDIA GH200 GPUs, or 50 hours on a single desktop GPU in a DGX Spark. Depending on the target or the amount of data, it may take more or less time. As GPU kernels become more efficient, this fine-tuning time will also decline.</p>
+          <p>Here, we fine-tune OpenFold3-p2 on the 79 fragment-bound structures for 1,000 steps using a batch size of 8, a learning rate of 3e-4, and a 100-step linear warmup. This takes approximately eight hours on eight NVIDIA GH200 GPUs, or 50 hours on a single desktop GPU in a DGX Spark. Depending on the target or the amount of data, it may take more or less time. As GPU kernels become more efficient, this fine-tuning time will also decline.</p>
 
           <figure class="article__figure">
             <img src="assets/images/blog/of3-finetuning-training-curves.png" alt="Training and validation curves over 1,000 fine-tuning steps: train/lddt_intra_protein rises from 0.875 to about 0.99, and val/lddt_inter_protein_ligand rises to roughly 0.85.">
