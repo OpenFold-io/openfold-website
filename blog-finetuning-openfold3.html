@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fine-tuning OpenFold3 on target-specific structural data | OpenFold</title>
-  <meta name="description" content="A tutorial on fine-tuning OpenFold3 on data from OpenBind's first data drop: dataset preparation, train/validation caches, training YAML, hyperparameters, and results.">
+  <title>Finetuning OpenFold3 locally on data from OpenBind&rsquo;s first data drop | OpenFold</title>
+  <meta name="description" content="A tutorial on finetuning OpenFold3 locally on data from OpenBind's first data drop: dataset preparation, train/validation caches, training YAML, hyperparameters, and results.">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/nav.css">
 </head>
@@ -43,8 +43,7 @@
 
         <header class="article__head">
           <span class="eyebrow">Tutorial</span>
-          <h1>Fine-tuning OpenFold3 on target-specific structural data</h1>
-          <p class="article__meta">Finetuning OpenFold3 on data from OpenBind&rsquo;s first data drop</p>
+          <h1>Finetuning OpenFold3 locally on data from OpenBind&rsquo;s first data drop</h1>
         </header>
 
         <div class="article__body">
@@ -52,7 +51,7 @@
 
           <p>Can a cofolding model be fine-tuned on new structural data and improve its performance on related structures? We recently explored this question using the first <a href="https://www.biorxiv.org/content/10.64898/2026.08.27.747600v1" target="_blank" rel="noopener noreferrer">OpenBind data release</a>, and found that fine-tuning OpenFold3 on fragment-bound structures improved its predictive performance on related follow-on compounds. We find this works well when the binding mode is conserved between fragment and follow-on compound.</p>
 
-          <p>In this post, we walk through what that workflow looks like in practice. We process the data in the OpenFold3 training data format, and provide guidance on hyperparameter choice. Although we typically fine tune the model using multiple GPUs, we have even done fine tuning on a desktop computer with a GPU, a <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener noreferrer">DGX Spark</a>.</p>
+          <p>In this post, we will walk through what that workflow looks like in practice. We will process the data into the correct format for OpenFold3 training data, and show how to fine-tune the model locally on <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener noreferrer">NVIDIA DGX Spark</a>.</p>
 
           <p>The accompanying repository can be found on <a href="https://github.com/aqlaboratory/openfold3-finetuning-example" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
 
