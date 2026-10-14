@@ -1060,7 +1060,9 @@ main {
 }
 
 .article__figure img {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
   background-color: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
