@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Finetuning OpenFold3 locally on data from OpenBind&rsquo;s first data drop | OpenFold</title>
   <meta name="description" content="A tutorial on finetuning OpenFold3 locally on data from OpenBind's first data drop: dataset preparation, train/validation caches, training YAML, hyperparameters, and results.">
+  <meta name="author" content="Etowah Adams">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/nav.css">
 </head>
@@ -44,6 +45,7 @@
         <header class="article__head">
           <span class="eyebrow">Tutorial</span>
           <h1>Finetuning OpenFold3 locally on data from OpenBind&rsquo;s first data drop</h1>
+          <p class="article__meta">By Etowah Adams</p>
         </header>
 
         <div class="article__body">
@@ -57,7 +59,7 @@
 
           <h2>1: Dataset preparation</h2>
 
-          <p>To get started with fine-tuning, we recommend getting things working using two structures from the OpenBind data release. The same procedure can also be applied to the entire dataset downloaded from Zenodo.</p>
+          <p>To get started with fine-tuning, we recommend getting things working using <a href="https://github.com/aqlaboratory/openfold3-finetuning-example/tree/master/example/single_structure_ft/dataset_raw" target="_blank" rel="noopener noreferrer">two structures</a> from the OpenBind data release, which are provided in the repository. The same procedure can also be applied to the entire dataset downloaded from Zenodo.</p>
 
 <pre><code>python runners/prepare_zenodo_data.py --input_dir example/single_structure_ft/dataset_raw --output_dir {folder path}</code></pre>
 
@@ -100,20 +102,45 @@ python runners/create_dataset_cache.py validation --ids {val_ids.txt} --dataset_
 
           <h2>3: Preparing training set YAML</h2>
 
-          <p>Now that the dataset has been prepared, you have to prepare a training YAML that specifies the newly generated training and validation datasets. If you&rsquo;re using structures processed from the PDB, you can just use the CCD file provided by the PDB.</p>
+          <p>Now that the dataset has been prepared, you have to prepare a training YAML that specifies the newly generated training and validation datasets. The <code>ccd_file</code> below points at the custom CCD written out in step 1; if your structures came from the PDB and contained no novel chemical matter, so that no custom CCD was needed, you can just point it at the CCD file provided by the PDB instead.</p>
 
-<pre><code>alignments_directory: none
-alignment_db_directory: none
-alignment_array_directory: {dataset_dir}/alignment_arrays
-dataset_cache_file: {dataset_dir}/caches/train_cache.json
-target_structures_directory: {dataset_dir}/preprocessed/structure_files
-target_structure_file_format: npz
-reference_molecule_directory: {dataset_dir}/preprocessed/reference_mols
-template_cache_directory: none
-template_structure_array_directory: {placeholder directory}
-template_structures_directory: none
-template_file_format: npz
-ccd_file: {dataset_dir}/merged_cifs/reference_data/components_harmonized.cif</code></pre>
+<pre><code>dataset_configs:
+  train:
+    weighted-pdb:
+      dataset_class: WeightedPDBDataset
+      weight: 1
+      config:
+        debug_mode: true
+        template:
+          n_templates: 4
+          take_top_k: false
+        crop:
+          token_crop:
+            enabled: true
+            token_budget: 384
+            crop_weights:
+              contiguous: 0.2
+              spatial: 0.4
+              spatial_interface: 0.4
+          chain_crop:
+            enabled: true
+
+dataset_paths:
+  weighted-pdb:
+    alignments_directory: none
+    alignment_db_directory: none
+    alignment_array_directory: {dataset_dir}/alignment_arrays
+    dataset_cache_file: {dataset_dir}/caches/train_cache.json
+    target_structures_directory: {dataset_dir}/preprocessed/structure_files
+    target_structure_file_format: npz
+    reference_molecule_directory: {dataset_dir}/preprocessed/reference_mols
+    template_cache_directory: none
+    template_structure_array_directory: {placeholder directory}
+    template_structures_directory: none
+    template_file_format: npz
+    ccd_file: {dataset_dir}/merged_cifs/reference_data/components_harmonized.cif</code></pre>
+
+          <p><code>dataset_configs</code> declares the dataset and how examples are drawn from it, and <code>dataset_paths</code> points it at the files you generated above. The keys have to line up: the <code>weighted-pdb</code> entry under <code>dataset_paths</code> is matched by name to the one under <code>dataset_configs</code>. A validation dataset is declared the same way, under <code>dataset_configs: validation</code> with its own matching <code>dataset_paths</code> entry.</p>
 
           <h3>Hyperparameters</h3>
 
@@ -124,7 +151,7 @@ ccd_file: {dataset_dir}/merged_cifs/reference_data/components_harmonized.cif</co
             <li><strong>Learning rate:</strong> For a batch size of 8, we have empirically found a learning rate of 0.0003 to work well (or any number in that vicinity), but you may need to retune the learning rate for a different batch size or if your dataset is more heterogeneous. The learning rate is the most impactful hyperparameter to tune.</li>
             <li><strong>Crop token budget:</strong> This is how many tokens the model sees per example. Base OpenFold3 uses 384 during its initial training. For protein-ligand fine-tuning, a crop size of 384 is sufficient (requiring about 30&ndash;40 GB of GPU memory when kernels are used), but to further decrease GPU memory, you can decrease the maximum token size of your dataset (if less than 384). The number of tokens the model sees during training per example is always padded to the crop size, so you will see significant memory and speed savings if you can set this to a smaller crop size.</li>
             <li><strong>Warm up steps:</strong> We have found 100 step warmups to be sufficient. For full parameter fine tuning on a small number of structures, the model will fit very quickly so some amount of warmup is helpful so the metrics do not immediately saturate.</li>
-            <li><strong>EMA decay:</strong> For OpenFold3 training, this is set to 0.999 (half-life ~700 steps), but we lower it to 0.9 (half-life ~10 steps) to be able to observe the impact of fine-tuning more quickly. For low-rank fine-tuning, it is unnecessary to use EMA.</li>
+            <li><strong>EMA decay:</strong> For OpenFold3 training, this is set to 0.999 (half-life ~693 steps). To be able to observe the impact of fine-tuning more quickly, we have experimented with lowering it to 0.9 (half-life ~6.6 steps); treat that as an experimental setting rather than a general recommendation. For low-rank fine-tuning, it is unnecessary to use EMA.</li>
           </ol>
 
           <p>Be sure to turn on GPU kernels as well, such as CuEquivariance for triangle operations. This will dramatically decrease the memory required for training, and increase the speed.</p>
@@ -165,7 +192,7 @@ ccd_file: {dataset_dir}/merged_cifs/reference_data/components_harmonized.cif</co
 
           <h2>Acknowledgements</h2>
 
-          <p>Thank you to Etowah Adams and Omeir Kahn for their contributions to the development of this tutorial and workflow.</p>
+          <p>Thank you to Omeir Kahn for their contributions to the development of this tutorial and workflow.</p>
         </div>
       </article>
     </div>
