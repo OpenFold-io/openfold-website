@@ -154,7 +154,18 @@ dataset_paths:
             <li><strong>EMA decay:</strong> For OpenFold3 training, this is set to 0.999 (half-life ~693 steps). To be able to observe the impact of fine-tuning more quickly, we have experimented with lowering it to 0.9 (half-life ~6.6 steps); treat that as an experimental setting rather than a general recommendation. For low-rank fine-tuning, it is unnecessary to use EMA.</li>
           </ol>
 
-          <p>Be sure to turn on GPU kernels as well, such as CuEquivariance for triangle operations. This will dramatically decrease the memory required for training, and increase the speed.</p>
+          <h3>GPU kernels</h3>
+
+          <p>Be sure to turn on GPU kernels as well, such as cuEquivariance for triangle operations. This will dramatically decrease the memory required for training, and increase the speed. Install them with <code>pip install openfold3[cuequivariance]</code>, then enable them for training in your runner YAML (the <code>train</code> block is separate from <code>eval</code>, and both default to off):</p>
+
+<pre><code>model_update:
+  custom:
+    settings:
+      memory:
+        train:
+          use_cueq_triangle_kernels: true</code></pre>
+
+          <p>To confirm they are working, check that peak GPU memory in <code>nvidia-smi</code> drops when you turn them on (about 30&ndash;40 GB at a 384-token crop). See the <a href="https://openfold-3.readthedocs.io/en/latest/kernels.html" target="_blank" rel="noopener noreferrer">OpenFold3 docs</a> for more details.</p>
 
           <h2>4: Start training!</h2>
 
