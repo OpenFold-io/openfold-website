@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finetuning OpenFold3 locally on data from OpenBind&rsquo;s first data drop | OpenFold</title>
-  <meta name="description" content="A tutorial on finetuning OpenFold3 locally on data from OpenBind's first data drop: dataset preparation, train/validation caches, training YAML, hyperparameters, and results.">
+  <title>Fine-tuning OpenFold3 locally on data from OpenBind&rsquo;s first data drop | OpenFold</title>
+  <meta name="description" content="A tutorial on fine-tuning OpenFold3 locally on data from OpenBind's first data drop: dataset preparation, train/validation caches, training YAML, hyperparameters, and results.">
   <meta name="author" content="Etowah Adams">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/nav.css">
@@ -40,140 +40,176 @@
   <section class="section">
     <div class="container">
       <article class="article">
+        <nav class="article__toc" aria-label="On this page">
+          <span class="article__toc-title">On this page</span>
+          <ul>
+            <li><a href="#dataset-preparation">1. Dataset preparation</a></li>
+            <li><a href="#caches">2. Creating your train/validation caches</a></li>
+            <li><a href="#training-yaml">3. Preparing training set YAML</a></li>
+            <li class="article__toc-sub"><a href="#hyperparameters">Hyperparameters</a></li>
+            <li class="article__toc-sub"><a href="#gpu-kernels">GPU kernels</a></li>
+            <li><a href="#start-training">4. Start training!</a></li>
+            <li><a href="#evaluating">Evaluating structural accuracy</a></li>
+            <li><a href="#in-practice">What this means in practice</a></li>
+            <li><a href="#acknowledgements">Acknowledgements</a></li>
+          </ul>
+        </nav>
+
+        <div class="article__main">
         <a class="article__back" href="blog.html">&larr; Back to blog</a>
 
         <header class="article__head">
           <span class="eyebrow">Tutorial</span>
-          <h1>Finetuning OpenFold3 locally on data from OpenBind&rsquo;s first data drop</h1>
+          <h1>Fine-tuning OpenFold3 locally on data from OpenBind&rsquo;s first data drop</h1>
           <p class="article__meta">By Etowah Adams</p>
         </header>
 
         <div class="article__body">
-          <p>When using a cofolding model in a drug discovery campaign, ideally the model should reflect the most up-to-date structural information available for the target. New structures may have recently been deposited in the PDB, or new experimental structures may be generated as the campaign progresses.</p>
+          <p class="article__lede">When using a cofolding model in a drug discovery campaign, ideally the model should reflect the most up-to-date structural information available for the target. New structures may have recently been deposited in the PDB, or new experimental structures may be generated as the campaign progresses.</p>
 
           <p>Can a cofolding model be fine-tuned on new structural data and improve its performance on related structures? We recently explored this question using the first <a href="https://www.biorxiv.org/content/10.64898/2026.08.27.747600v1" target="_blank" rel="noopener noreferrer">OpenBind data release</a>, and found that fine-tuning OpenFold3 on fragment-bound structures improved its predictive performance on related follow-on compounds. We find this works well when the binding mode is conserved between fragment and follow-on compound.</p>
 
           <p>In this post, we will walk through what that workflow looks like in practice. We will process the data into the correct format for OpenFold3 training data, and show how to fine-tune the model locally on <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/" target="_blank" rel="noopener noreferrer">NVIDIA DGX Spark</a>. You can even use this post as part of a prompt for your coding agent.</p>
 
-          <p>The accompanying repository can be found on <a href="https://github.com/aqlaboratory/openfold3-finetuning-example" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+          <p class="article__callout"><span class="article__callout-label">Code</span> The accompanying repository can be found on <a href="https://github.com/aqlaboratory/openfold3-finetuning-example" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
 
-          <h2>1: Dataset preparation</h2>
+          <h2 id="dataset-preparation"><span class="article__step">1</span> Dataset preparation</h2>
 
           <p>To get started with fine-tuning, we recommend getting things working using <a href="https://github.com/aqlaboratory/openfold3-finetuning-example/tree/master/example/single_structure_ft/dataset_raw" target="_blank" rel="noopener noreferrer">two structures</a> from the OpenBind data release, which are provided in the repository. The same procedure can also be applied to the entire dataset downloaded from Zenodo.</p>
 
-<pre><code>python runners/prepare_zenodo_data.py --input_dir example/single_structure_ft/dataset_raw --output_dir {folder path}</code></pre>
+<div class="code-block code-block--wrap">
+            <div class="code-block__bar"><span>shell</span></div>
+<pre><code><span class="code-line"><span class="tok-cmd">python</span> runners/prepare_zenodo_data.py <span class="tok-flag">--input_dir</span> example/single_structure_ft/dataset_raw <span class="tok-flag">--output_dir</span> <span class="tok-var">{folder path}</span></span></code></pre>
+          </div>
 
           <p>This dataset preparation script performs a number of unique tasks compared to typical PDB processing:</p>
 
-          <ol>
-            <li><strong>Monomerization:</strong> When a protein is crystallized, the crystallized unit is sometimes a dimer. Biologically, however, this protein functions as a monomer, and virtual screening is done using a monomer, so we take the protein chain that is bound to the ligand. In typical PDB processing, the first bioassembly is taken.</li>
-            <li><strong>Creating a custom CCD:</strong> The chemical component dictionary (CCD) is responsible for specifying the connectivity of the molecules specified in the training set. For structures taken from the PDB, you can use the CCD provided by the PDB. However, if you are training on novel chemical matter, such as in this case, it is necessary to modify the CCD to specify the novel ligands.</li>
+          <ol class="article__steps">
+            <li><strong>Monomerization</strong> When a protein is crystallized, the crystallized unit is sometimes a dimer. Biologically, however, this protein functions as a monomer, and virtual screening is done using a monomer, so we take the protein chain that is bound to the ligand. In typical PDB processing, the first bioassembly is taken.</li>
+            <li><strong>Creating a custom CCD</strong> The chemical component dictionary (CCD) is responsible for specifying the connectivity of the molecules specified in the training set. For structures taken from the PDB, you can use the CCD provided by the PDB. However, if you are training on novel chemical matter, such as in this case, it is necessary to modify the CCD to specify the novel ligands.</li>
           </ol>
 
           <p>After this is done, the standard data processing can be applied, which performs the following:</p>
 
-          <ol>
-            <li><strong>Sequence clustering:</strong> Associate identical sequences together into the same cluster. This ensures that data sampling works properly, and redundant MSAs are not generated.</li>
-            <li><strong>MSA generation:</strong> For each unique sequence, generate an MSA. Here, we use ColabFoldDB&rsquo;s API for MSA construction, although for larger-scale MSA generation, you would want to download the sequence database locally.</li>
-            <li><strong>Metadata cache creation:</strong> All of the data is summarized into a single metadata cache that captures information relevant to each target.</li>
+          <ol class="article__steps">
+            <li><strong>Sequence clustering</strong> Associate identical sequences together into the same cluster. This ensures that data sampling works properly, and redundant MSAs are not generated.</li>
+            <li><strong>MSA generation</strong> For each unique sequence, generate an MSA. Here, we use ColabFoldDB&rsquo;s API for MSA construction, although for larger-scale MSA generation, you would want to download the sequence database locally.</li>
+            <li><strong>Metadata cache creation</strong> All of the data is summarized into a single metadata cache that captures information relevant to each target.</li>
           </ol>
 
           <p>More typically, you may want to train on structures already in the PDB. You can search a sequence database constructed from PDB entries using MMseqs2 (which has <a href="https://developer.nvidia.com/blog/boost-alphafold2-protein-structure-prediction-with-gpu-accelerated-mmseqs2/" target="_blank" rel="noopener noreferrer">GPU-accelerated</a> variants) or other search methods. We have also provided a script that can take a folder of <code>.cif</code> files from the PDB to prepare a dataset.</p>
 
-<pre><code>python runners/prepare_pdb_data.py --input_dir {folder of .cif files} --output_dir {folder path}</code></pre>
+<div class="code-block code-block--wrap">
+            <div class="code-block__bar"><span>shell</span></div>
+<pre><code><span class="code-line"><span class="tok-cmd">python</span> runners/prepare_pdb_data.py <span class="tok-flag">--input_dir</span> <span class="tok-var">{folder of .cif files}</span> <span class="tok-flag">--output_dir</span> <span class="tok-var">{folder path}</span></span></code></pre>
+          </div>
 
-          <h2>2: Creating your train/validation caches</h2>
+          <h2 id="caches"><span class="article__step">2</span> Creating your train/validation caches</h2>
 
           <p>Once your dataset is prepared, you can choose what subset to use as training, and what portion to use as validation. Assuming you have a list of ids for train and validation, you can run the following:</p>
 
-<pre><code>python runners/create_dataset_cache.py train --ids {train_ids.txt} --dataset_dir {folder path}
-python runners/create_dataset_cache.py validation --ids {val_ids.txt} --dataset_dir {folder path}</code></pre>
+<div class="code-block code-block--wrap">
+            <div class="code-block__bar"><span>shell</span></div>
+<pre><code><span class="code-line"><span class="tok-cmd">python</span> runners/create_dataset_cache.py train <span class="tok-flag">--ids</span> <span class="tok-var">{train_ids.txt}</span> <span class="tok-flag">--dataset_dir</span> <span class="tok-var">{folder path}</span>
+</span><span class="code-line"><span class="tok-cmd">python</span> runners/create_dataset_cache.py validation <span class="tok-flag">--ids</span> <span class="tok-var">{val_ids.txt}</span> <span class="tok-flag">--dataset_dir</span> <span class="tok-var">{folder path}</span></span></code></pre>
+          </div>
 
           <p>In our example, we have just a single training structure and a single validation structure.</p>
 
           <p>This step creates the files that will be used next to define the model&rsquo;s training and validation datasets. We recommend manually inspecting the caches at this point to ensure that data processing has worked as expected, and that the clustering and chains you expect are all present. Other things to look out for:</p>
 
-          <ul>
+          <ul class="article__panel">
             <li>The PDB can occasionally have incorrectly annotated structures. For instance, we have observed very occasionally that the ligand of interest may not be in the first bioassembly and thus gets dropped from processing.</li>
             <li>For custom datasets, make sure the structural resolution field is specified; examples without a resolution value are ignored by the confidence head and therefore do not contribute to updating it during training.</li>
           </ul>
 
-          <p>The training and validation caches can subsequently be subset to just the entries that you want to train and validate on. We often generate caches using entries that are the union of all configurations we want to try, so we can easily subset them later. We highly recommend creating a training and validation set with a single structure that you can use for all of your initial testing to make sure you can overfit on a single structure.</p>
+          <p>The training and validation caches can subsequently be subset to just the entries that you want to train and validate on. We often generate caches using entries that are the union of all configurations we want to try, so we can easily subset them later.</p>
 
-          <h2>3: Preparing training set YAML</h2>
+          <p class="article__callout"><span class="article__callout-label">Tip</span> We highly recommend creating a training and validation set with a single structure that you can use for all of your initial testing to make sure you can overfit on a single structure.</p>
+
+          <h2 id="training-yaml"><span class="article__step">3</span> Preparing training set YAML</h2>
 
           <p>Now that the dataset has been prepared, you have to prepare a training YAML that specifies the newly generated training and validation datasets. The <code>ccd_file</code> below points at the custom CCD written out in step 1; if your structures came from the PDB and contained no novel chemical matter, so that no custom CCD was needed, you can just point it at the CCD file provided by the PDB instead.</p>
 
-<pre><code>dataset_configs:
-  train:
-    weighted-pdb:
-      dataset_class: WeightedPDBDataset
-      weight: 1
-      config:
-        debug_mode: true
-        template:
-          n_templates: 4
-          take_top_k: false
-        crop:
-          token_crop:
-            enabled: true
-            token_budget: 384
-            crop_weights:
-              contiguous: 0.2
-              spatial: 0.4
-              spatial_interface: 0.4
-          chain_crop:
-            enabled: true
+<div class="code-block">
+            <div class="code-block__bar"><span>yaml</span></div>
+<pre><code><span class="tok-key">dataset_configs</span>:
+  <span class="tok-key">train</span>:
+    <span class="tok-key">weighted-pdb</span>:
+      <span class="tok-key">dataset_class</span>: WeightedPDBDataset
+      <span class="tok-key">weight</span>: <span class="tok-lit">1</span>
+      <span class="tok-key">config</span>:
+        <span class="tok-key">debug_mode</span>: <span class="tok-lit">true</span>
+        <span class="tok-key">template</span>:
+          <span class="tok-key">n_templates</span>: <span class="tok-lit">4</span>
+          <span class="tok-key">take_top_k</span>: <span class="tok-lit">false</span>
+        <span class="tok-key">crop</span>:
+          <span class="tok-key">token_crop</span>:
+            <span class="tok-key">enabled</span>: <span class="tok-lit">true</span>
+            <span class="tok-key">token_budget</span>: <span class="tok-lit">384</span>
+            <span class="tok-key">crop_weights</span>:
+              <span class="tok-key">contiguous</span>: <span class="tok-lit">0.2</span>
+              <span class="tok-key">spatial</span>: <span class="tok-lit">0.4</span>
+              <span class="tok-key">spatial_interface</span>: <span class="tok-lit">0.4</span>
+          <span class="tok-key">chain_crop</span>:
+            <span class="tok-key">enabled</span>: <span class="tok-lit">true</span>
 
-dataset_paths:
-  weighted-pdb:
-    alignments_directory: none
-    alignment_db_directory: none
-    alignment_array_directory: {dataset_dir}/alignment_arrays
-    dataset_cache_file: {dataset_dir}/caches/train_cache.json
-    target_structures_directory: {dataset_dir}/preprocessed/structure_files
-    target_structure_file_format: npz
-    reference_molecule_directory: {dataset_dir}/preprocessed/reference_mols
-    template_cache_directory: none
-    template_structure_array_directory: {placeholder directory}
-    template_structures_directory: none
-    template_file_format: npz
-    ccd_file: {dataset_dir}/merged_cifs/reference_data/components_harmonized.cif</code></pre>
+<span class="tok-key">dataset_paths</span>:
+  <span class="tok-key">weighted-pdb</span>:
+    <span class="tok-key">alignments_directory</span>: <span class="tok-lit">none</span>
+    <span class="tok-key">alignment_db_directory</span>: <span class="tok-lit">none</span>
+    <span class="tok-key">alignment_array_directory</span>: <span class="tok-var">{dataset_dir}</span>/alignment_arrays
+    <span class="tok-key">dataset_cache_file</span>: <span class="tok-var">{dataset_dir}</span>/caches/train_cache.json
+    <span class="tok-key">target_structures_directory</span>: <span class="tok-var">{dataset_dir}</span>/preprocessed/structure_files
+    <span class="tok-key">target_structure_file_format</span>: npz
+    <span class="tok-key">reference_molecule_directory</span>: <span class="tok-var">{dataset_dir}</span>/preprocessed/reference_mols
+    <span class="tok-key">template_cache_directory</span>: <span class="tok-lit">none</span>
+    <span class="tok-key">template_structure_array_directory</span>: <span class="tok-var">{placeholder directory}</span>
+    <span class="tok-key">template_structures_directory</span>: <span class="tok-lit">none</span>
+    <span class="tok-key">template_file_format</span>: npz
+    <span class="tok-key">ccd_file</span>: <span class="tok-var">{dataset_dir}</span>/merged_cifs/reference_data/components_harmonized.cif</code></pre>
+          </div>
 
           <p><code>dataset_configs</code> declares the dataset and how examples are drawn from it, and <code>dataset_paths</code> points it at the files you generated above. The keys have to line up: the <code>weighted-pdb</code> entry under <code>dataset_paths</code> is matched by name to the one under <code>dataset_configs</code>. A validation dataset is declared the same way, under <code>dataset_configs: validation</code> with its own matching <code>dataset_paths</code> entry.</p>
 
-          <h3>Hyperparameters</h3>
+          <h3 id="hyperparameters">Hyperparameters</h3>
 
           <p>Besides the dataset, the training YAML is where you specify important hyperparameters relevant to training:</p>
 
-          <ol>
-            <li><strong>Batch size:</strong> Specify the global batch size. Base OpenFold3 training uses a 256 batch size, but for small homogenous finetuning datasets like the one we have here, we have found that small batch sizes (4 or 8) are sufficient. If you&rsquo;re training on a single GPU you may need to use gradient accumulation.</li>
-            <li><strong>Learning rate:</strong> For a batch size of 8, we have empirically found a learning rate of 0.0003 to work well (or any number in that vicinity), but you may need to retune the learning rate for a different batch size or if your dataset is more heterogeneous. The learning rate is the most impactful hyperparameter to tune.</li>
-            <li><strong>Crop token budget:</strong> This is how many tokens the model sees per example. Base OpenFold3 uses 384 during its initial training. For protein-ligand fine-tuning, a crop size of 384 is sufficient (requiring about 30&ndash;40 GB of GPU memory when kernels are used), but to further decrease GPU memory, you can decrease the maximum token size of your dataset (if less than 384). The number of tokens the model sees during training per example is always padded to the crop size, so you will see significant memory and speed savings if you can set this to a smaller crop size.</li>
-            <li><strong>Warm up steps:</strong> We have found 100 step warmups to be sufficient. For full parameter fine tuning on a small number of structures, the model will fit very quickly so some amount of warmup is helpful so the metrics do not immediately saturate.</li>
-            <li><strong>EMA decay:</strong> For OpenFold3 training, this is set to 0.999 (half-life ~693 steps). To be able to observe the impact of fine-tuning more quickly, we have experimented with lowering it to 0.9 (half-life ~6.6 steps); treat that as an experimental setting rather than a general recommendation. For low-rank fine-tuning, it is unnecessary to use EMA.</li>
+          <ol class="article__steps">
+            <li><strong>Batch size</strong> Specify the global batch size. Base OpenFold3 training uses a 256 batch size, but for small homogenous fine-tuning datasets like the one we have here, we have found that small batch sizes (4 or 8) are sufficient. If you&rsquo;re training on a single GPU you may need to use gradient accumulation.</li>
+            <li><strong>Learning rate</strong> For a batch size of 8, we have empirically found a learning rate of 0.0003 to work well (or any number in that vicinity), but you may need to retune the learning rate for a different batch size or if your dataset is more heterogeneous. The learning rate is the most impactful hyperparameter to tune.</li>
+            <li><strong>Crop token budget</strong> This is how many tokens the model sees per example. Base OpenFold3 uses 384 during its initial training. For protein-ligand fine-tuning, a crop size of 384 is sufficient (requiring about 30&ndash;40 GB of GPU memory when kernels are used), but to further decrease GPU memory, you can decrease the maximum token size of your dataset (if less than 384). The number of tokens the model sees during training per example is always padded to the crop size, so you will see significant memory and speed savings if you can set this to a smaller crop size.</li>
+            <li><strong>Warm up steps</strong> We have found 100 step warmups to be sufficient. For full parameter fine-tuning on a small number of structures, the model will fit very quickly so some amount of warmup is helpful so the metrics do not immediately saturate.</li>
+            <li><strong>EMA decay</strong> For OpenFold3 training, this is set to 0.999 (half-life ~693 steps). To be able to observe the impact of fine-tuning more quickly, we have experimented with lowering it to 0.9 (half-life ~6.6 steps); treat that as an experimental setting rather than a general recommendation. For low-rank fine-tuning, it is unnecessary to use EMA.</li>
           </ol>
 
-          <h3>GPU kernels</h3>
+          <h3 id="gpu-kernels">GPU kernels</h3>
 
           <p>Be sure to turn on GPU kernels as well, such as cuEquivariance for triangle operations. This will dramatically decrease the memory required for training, and increase the speed. Install them with <code>pip install openfold3[cuequivariance]</code>, then enable them for training in your runner YAML (the <code>train</code> block is separate from <code>eval</code>, and both default to off):</p>
 
-<pre><code>model_update:
-  custom:
-    settings:
-      memory:
-        train:
-          use_cueq_triangle_kernels: true</code></pre>
+<div class="code-block">
+            <div class="code-block__bar"><span>yaml</span></div>
+<pre><code><span class="tok-key">model_update</span>:
+  <span class="tok-key">custom</span>:
+    <span class="tok-key">settings</span>:
+      <span class="tok-key">memory</span>:
+        <span class="tok-key">train</span>:
+          <span class="tok-key">use_cueq_triangle_kernels</span>: <span class="tok-lit">true</span></code></pre>
+          </div>
 
           <p>To confirm they are working, check that peak GPU memory in <code>nvidia-smi</code> drops when you turn them on (about 30&ndash;40 GB at a 384-token crop). See the <a href="https://openfold-3.readthedocs.io/en/latest/kernels.html" target="_blank" rel="noopener noreferrer">OpenFold3 docs</a> for more details.</p>
 
-          <h2>4: Start training!</h2>
+          <h2 id="start-training"><span class="article__step">4</span> Start training!</h2>
 
           <p>With your completed training cache, you can now launch your training run. On a Slurm based system, you can use the <code>srun</code> command to facilitate multi-node training.</p>
 
-<pre><code>srun python -m openfold3.run_openfold train \
-    --runner_yaml "${RUNNER_YAML}" \
-    --seed "${SEED}"</code></pre>
+<div class="code-block code-block--wrap">
+            <div class="code-block__bar"><span>shell</span></div>
+<pre><code><span class="code-line"><span class="tok-cmd">srun python</span> -m openfold3.run_openfold train \
+</span><span class="code-line">    <span class="tok-flag">--runner_yaml</span> <span class="tok-var">"${RUNNER_YAML}"</span> \
+</span><span class="code-line">    <span class="tok-flag">--seed</span> <span class="tok-var">"${SEED}"</span></span></code></pre>
+          </div>
 
           <p>For a complete example runner YAML, see the <a href="https://github.com/aqlaboratory/openfold3-finetuning-example/blob/master/example/single_structure_ft/scripts/runner.yml" target="_blank" rel="noopener noreferrer">one used for the single-structure example</a> in the repository, which fine-tunes on a single training structure and validates on a single validation structure.</p>
 
@@ -186,7 +222,7 @@ dataset_paths:
 
           <p>After training, we have a new OpenFold3 checkpoint that can be run through the same inference pipeline as the base model.</p>
 
-          <h2>Evaluating structural accuracy</h2>
+          <h2 id="evaluating">Evaluating structural accuracy</h2>
 
           <p>Was all this effort worth it? Did the fine-tuning improve the model&rsquo;s ability to predict follow-on compounds? We find that for this particular drug target, fine-tuning does dramatically improve the predictive capability.</p>
 
@@ -195,7 +231,7 @@ dataset_paths:
             <figcaption>Figure from the OpenBind data release <a href="https://www.biorxiv.org/content/10.64898/2026.08.27.747600v1" target="_blank" rel="noopener noreferrer">paper</a>.</figcaption>
           </figure>
 
-          <h2>What this means in practice</h2>
+          <h2 id="in-practice">What this means in practice</h2>
 
           <p>For this target, a small set of fragment-bound structures could improve pose prediction and virtual-screening discrimination on related follow-on compounds. Fine-tuning could even be done on a single desktop GPU.</p>
 
@@ -203,9 +239,10 @@ dataset_paths:
 
           <p>We are still working to understand the conditions under which fine-tuning is helpful. Similar to our colleagues at OpenADMET, we have observed that the similarity of the test entries to training entries is very important for seeing a performance improvement. However, we hope the method described here will help others get started with fine-tuning on their own datasets.</p>
 
-          <h2>Acknowledgements</h2>
+          <h2 id="acknowledgements">Acknowledgements</h2>
 
           <p>Thank you to Omeir Kahn for their contributions to the development of this tutorial and workflow, and to Jennifer Wei and Jan Domanski for providing feedback on this post.</p>
+        </div>
         </div>
       </article>
     </div>
@@ -239,5 +276,6 @@ dataset_paths:
 </footer>
 
 <script src="js/nav.js"></script>
+<script src="js/article.js"></script>
 </body>
 </html>
