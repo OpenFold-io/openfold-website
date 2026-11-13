@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water co-folding with OpenFold3 | OpenFold</title>
+  <meta name="description" content="An early community preview of OpenFold3-P2-ft-water, the first publicly available co-folding model that predicts binding-site water molecules: methods, evaluation, results, and next steps.">
+  <meta name="author" content="OpenFold">
+  <link rel="stylesheet" href="../../styles/main.css">
+  <link rel="stylesheet" href="../../styles/nav.css">
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a class="site-nav__brand" href="../../index.html" aria-label="OpenFold home">
+      <img src="../../assets/openFold-logo/white/svg/OpenFold-white.svg" alt="OpenFold">
+    </a>
+    <button class="site-nav__toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="site-nav__menu" id="primary-menu">
+      <ul class="site-nav__links">
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../science.html">Models and Code</a></li>
+        <li><a href="../../team.html">Team</a></li>
+        <li><a href="../../news.html">News</a></li>
+        <li><a href="../../blog.html" class="is-active" aria-current="page">Blog</a></li>
+        <li><a href="../../community.html">Community</a></li>
+      </ul>
+      <div class="site-nav__right">
+        <a class="btn btn--primary btn--sm" href="https://portal.openfold.io/" target="_blank" rel="noopener noreferrer">Launch Prediction Server</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <article class="article">
+        <nav class="article__toc" aria-label="On this page">
+          <span class="article__toc-title">On this page</span>
+          <ul>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#methods">Methods</a></li>
+            <li class="article__toc-sub"><a href="#xray-waters">Waters in X-ray structures</a></li>
+            <li><a href="#evaluation">Evaluation</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#next-steps">Next steps</a></li>
+            <li><a href="#conclusions">Conclusions</a></li>
+            <li><a href="#acknowledgements">Acknowledgements</a></li>
+          </ul>
+        </nav>
+
+        <div class="article__main">
+        <a class="article__back" href="../../blog.html">&larr; Back to blog</a>
+
+        <header class="article__head">
+          <span class="eyebrow">Model release</span>
+          <h1>Water co-folding with OpenFold3</h1>
+          <p class="article__meta">By the OpenFold team &middot; November 13, 2026</p>
+        </header>
+
+        <div class="article__body">
+          <figure class="article__figure">
+            <video autoplay muted loop playsinline preload="metadata" poster="../../assets/videos/blog/of3-water-hero-poster.jpg" aria-label="Animation of OpenFold3-P2-ft-water denoising a noisy cloud of atoms into a protein&ndash;ligand complex for PDB 7FX1 with placed binding-site waters, then comparing it with the crystal structure: 6 of 9 predicted waters lie within 1 &Aring; of a crystal water.">
+              <source src="../../assets/videos/blog/of3-water-hero.mp4" type="video/mp4">
+            </video>
+            <figcaption>From a noisy cloud of atoms to a hydrated binding pocket. OpenFold3-P2-ft-water predicts the complex for PDB 7FX1, then the prediction is compared with the crystal structure (white).</figcaption>
+          </figure>
+
+          <h2 id="summary">Summary</h2>
+
+          <p class="article__lede">We are releasing OpenFold3-P2-ft-water, the first publicly available co-folding model that can predict binding-site water molecules.</p>
+
+          <p>While co-folding models excel at macromolecular geometry, resolving solvent-mediated interactions has remained an open challenge in structural biology. OpenFold3-P2-ft-water bridges this gap: it captures experimentally verified pocket waters significantly better than baseline OpenFold3-P2, delivering recall on par with standard physics-based methods like 3D-RISM.</p>
+
+          <p class="article__callout"><span class="article__callout-label">Try it</span> As an early community preview, the model weights and inference code are available through the <a href="https://portal.openfold.io/" target="_blank" rel="noopener noreferrer">OpenFold Portal</a> for evaluation and feedback. We plan to release the weights, code, training data, and methods in a subsequent open-source release.</p>
+
+          <h2 id="introduction">Introduction</h2>
+
+          <p>Co-folding models have emerged as powerful tools for early-stage drug discovery. These models take in protein sequence and ligand as inputs to predict the 3D coordinates of the resulting structure complex. Since AlphaFold3&rsquo;s debut in 2024, over 20 co-folding models have been released, including the fully open-source OpenFold3. These models work across multiple modalities: protein, ligands, DNA/RNA, and ions, making them useful for both small-molecule and biologics discovery.</p>
+
+          <p>One modality absent in all currently open-source models is water. Our bodies are made up of 60% water, by mass, and water provides the environment in which our cells operate and proteins fold and interact. Water molecules can be identified in structural biology experiments, occupying key protein pockets, mediating both drug&ndash;protein and protein&ndash;protein interfaces. In drug design, understanding when to preserve, displace, or reorganize these key waters is often crucial to improving potency and selectivity of drugs, and is at times associated with unexpected &ldquo;activity cliffs&rdquo; when key structural waters are displaced. Modelling this modality is thus a central challenge, a key capability missing in current co-folding models and their many downstream tasks, including affinity prediction.</p>
+
+          <p>We present an early release of our OpenFold3-P2-ft-water model, based on OpenFold3-P2, which provides end-to-end co-folding of protein&ndash;small-molecule complexes with inclusion of waters. We first showcased this model during the <a href="https://www.cofold.org/" target="_blank" rel="noopener noreferrer">co-folding summit</a> in May 2026 and now want to provide it to the wider community. We&rsquo;re working towards a full release (data, methods, training code, and checkpoint) in 2027, and we want to engage the community in evaluating this capability. For protein&ndash;protein and protein&ndash;ligand co-folding a range of benchmarks and metrics exist; evaluation of water co-folding is a new challenge to the community. We present the outline of our methodology, data processing, and approach to evaluation, and provide an interactive server allowing the community to evaluate the capabilities of our models.</p>
+
+          <figure class="article__figure article__figure--pair">
+            <div class="article__figure-grid">
+              <video autoplay muted loop playsinline preload="metadata" poster="../../assets/videos/blog/of3-water-surface-poster.jpg" aria-label="Diffusion of the predicted structure for PDB 7FX1 shown as a protein surface, followed by the predicted pocket and comparison with the crystal structure.">
+                <source src="../../assets/videos/blog/of3-water-surface.mp4" type="video/mp4">
+              </video>
+              <video autoplay muted loop playsinline preload="metadata" poster="../../assets/videos/blog/of3-water-atomistic-poster.jpg" aria-label="Diffusion of the predicted structure for PDB 7FX1 shown atom by atom, followed by the predicted pocket and comparison with the crystal structure.">
+                <source src="../../assets/videos/blog/of3-water-atomistic.mp4" type="video/mp4">
+              </video>
+            </div>
+            <figcaption>The same prediction for PDB 7FX1, shown as a surface (left) and atomistically (right): the ligand, pocket side chains and predicted waters (pink), then compared with the crystal structure.</figcaption>
+          </figure>
+
+          <h2 id="methods">Methods</h2>
+
+          <p>Our co-folding water model was obtained by fine-tuning the OpenFold3-P2 co-folding model, trained on the PDB with a 2021 cutoff date. PDB entries were filtered to remove structures with resolution &gt; 2.5&nbsp;&Aring;, and waters farther than 5&nbsp;&Aring; from the heavy atoms of small molecule ligands (excluding crystallographic aids) were stripped. We treated the remaining waters as being in the binding site. For each entry in the training set, these additional water tokens were included in the training datapoints; other parts of the query remained unchanged (MSA, template hits).</p>
+
+          <p>Waters are treated as indistinguishable from one another; that is, there is no penalty for swapping the positions of water A and water B, relative to ground truth coordinates. Before computing any loss, we align the prediction on the protein and ligand, then match predicted waters one-to-one to crystal waters with the Hungarian algorithm. During training, we subsample binding-site waters within a randomly sampled distance (0 to 5&nbsp;&Aring;) of any ligand heavy atom in the ground-truth structure, so the model sees anything from a dry pocket to a full first hydration shell. Water&ndash;water pairs were omitted from the smooth lDDT term.</p>
+
+          <figure class="article__figure">
+            <video autoplay muted loop playsinline preload="metadata" poster="../../assets/videos/blog/of3-water-inference-run-poster.jpg" aria-label="Side-by-side view of a real inference run for PDB 7FX1: the noisy structure the sampler carries on the left and the network's estimate of the final structure on the right, from step 115 to step 200 of 200.">
+              <source src="../../assets/videos/blog/of3-water-inference-run.mp4" type="video/mp4">
+            </video>
+            <figcaption>Diffusion in a real inference run (PDB 7FX1, fine-tuned model). Left: the noisy structure the sampler carries. Right: the network&rsquo;s estimate of the final structure, with predicted waters (blue) and crystal waters (red).</figcaption>
+          </figure>
+
+          <h3 id="xray-waters">A note on waters in X-ray structures</h3>
+
+          <p>It is often said that all models are wrong, but some are useful. X-ray crystal structures, which make up the overwhelming majority of the PDB, are models produced by fitting atoms to best explain experimental electron density, but ambiguous electron densities can lead to incorrect handling of water molecules.</p>
+
+          <p>A model fine-tuned on deposited waters learns what crystallographers chose to model, but the crystal structure doesn&rsquo;t always reflect physical reality. In some cases, the addition of poorly substantiated water molecules during structure refinement can improve the PDB model&rsquo;s R-factor, a standard metric of model fit. R<sub>free</sub>, a cross-validation statistic that measures overfitting, can miss this kind of &ldquo;R-factor gaming&rdquo;. In this work, we filtered training data by resolution, a common but flawed proxy for data quality. Fine-tuning results have been promising, but noisy input data is expected to impact model performance. By filtering PDB structures, a <a href="https://www.sciencedirect.com/science/article/abs/pii/S1359644612002048" target="_blank" rel="noopener noreferrer">&ldquo;highly trustworthy&rdquo; set of structures</a> can be built, reducing the number of datapoints for their improved quality; this introduces a tradeoff between coverage and quality that must be evaluated.</p>
+
+          <p class="article__callout"><span class="article__callout-label">An alternative</span> One approach we&rsquo;ve considered (but not implemented) is to regenerate existing PDB models from their underlying electron densities using a consistent procedure (PDB-REDO), allowing a model to be trained only on the individual water molecules with good evidence.</p>
+
+          <h2 id="evaluation">Evaluation</h
