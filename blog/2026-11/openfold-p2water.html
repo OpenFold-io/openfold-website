@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Water co-folding with OpenFold3 | OpenFold</title>
-  <meta name="description" content="An early community preview of OpenFold3-P2-ft-water, the first publicly available co-folding model that predicts binding-site water molecules: methods, evaluation, results, and next steps.">
+  <meta name="description" content="An early community preview of OpenFold3-P2-ft-water, the first publicly available co-folding model that predicts binding-site water molecules: methods, evaluation, results, and future directions.">
   <meta name="author" content="Helmut Carter, Jan Domanski">
   <link rel="stylesheet" href="../../styles/main.css">
   <link rel="stylesheet" href="../../styles/nav.css">
@@ -91,9 +91,9 @@
 
           <h2 id="introduction">Introduction</h2>
 
-          <p>Co-folding models have emerged as powerful tools for early-stage drug discovery. These models take in protein sequence and ligand as inputs to predict the 3D coordinates of the resulting structure complex. Since AlphaFold3&rsquo;s debut in 2024, over 20 co-folding models have been released, including the fully open-source OpenFold3. These models work across multiple modalities: protein, ligands, DNA/RNA, and ions, making them useful for both small-molecule and biologics discovery.</p>
+          <p>Co-folding models have emerged as powerful tools for early-stage drug discovery. These models take in protein sequence and ligand as inputs to predict the 3D coordinates of the resulting structure complex. Since AlphaFold3&rsquo;s debut in 2024, over 20 co-folding models have been released, including the fully open-source OpenFold3. These models work across multiple modalities: proteins, ligands, DNA/RNA, and ions, making them useful for both small-molecule and biologics discovery.</p>
 
-          <p>One modality absent in all currently open-source models is water. Our bodies are made up of 60% water, by mass, and water provides the environment in which our cells operate and proteins fold and interact. Water molecules can be identified in structural biology experiments, occupying key protein pockets, mediating both drug&ndash;protein and protein&ndash;protein interfaces. In drug design, understanding when to preserve, displace, or reorganize these key waters is often crucial to improving potency and selectivity of drugs, and is at times associated with unexpected &ldquo;activity cliffs&rdquo; when key structural waters are displaced. Modelling this modality is thus a central challenge, a key capability missing in current co-folding models and their many downstream tasks, including affinity prediction.</p>
+          <p>One modality absent in all currently open-source models is water. Our bodies are made up of 60% water, by mass, and water provides the environment in which our cells operate and proteins fold and interact. Water molecules can be identified in structural biology experiments, occupying key protein pockets, mediating both drug&ndash;protein and protein&ndash;protein interfaces. In drug design, understanding when to preserve, displace, or reorganize these key waters is often crucial to improving potency and selectivity of drugs, and is at times associated with unexpected &ldquo;activity cliffs&rdquo; when key structural waters are displaced. Modeling this modality is thus a central challenge, a key capability missing in current co-folding models and their many downstream tasks, including affinity prediction.</p>
 
           <p>We present an early release of our OpenFold3-P2-ft-water model, based on OpenFold3-P2, which provides end-to-end co-folding of protein&ndash;small-molecule complexes with inclusion of waters. We first showcased this model during the <a href="https://www.cofold.org/" target="_blank" rel="noopener noreferrer">co-folding summit</a> in May 2026 and now want to provide it to the wider community. We&rsquo;re working towards a full release (data, methods, training code, and checkpoint) in 2027, and we want to engage the community in evaluating this capability. For protein&ndash;protein and protein&ndash;ligand co-folding a range of benchmarks and metrics exist; evaluation of water co-folding is a new challenge to the community. We present the outline of our methodology, data processing, and approach to evaluation, and provide an interactive server allowing the community to evaluate the capabilities of our models.</p>
 
@@ -106,9 +106,9 @@
 
           <h2 id="methods">Methods</h2>
 
-          <p>Our co-folding water model was obtained by fine-tuning the OpenFold3-P2 co-folding model, trained on the PDB with a 2021 cutoff date (180,010 entries). PDB entries were filtered to remove structures with resolution greater than 2.5&nbsp;&Aring;, and waters farther than 5&nbsp;&Aring; from the heavy atoms of small molecule ligands (excluding crystallographic aids) were stripped. We treated the remaining waters as being in the binding site. For each entry in the training set, these additional water tokens were included in the training datapoints; other parts of the query remained unchanged (MSA, template hits).</p>
+          <p>Our co-folding water model was obtained by fine-tuning the OpenFold3-P2 co-folding model, trained on the PDB with a 2021 cutoff date (180,010 entries). PDB entries were filtered to remove structures with resolution greater than 2.5&nbsp;&Aring;, and waters farther than 5&nbsp;&Aring; from the heavy atoms of small-molecule ligands (excluding crystallographic aids) were stripped. We treated the remaining waters as being in the binding site. For each entry in the training set, these additional water tokens were included in the training data points; other parts of the query remained unchanged (MSA, template hits).</p>
 
-          <p>Waters were treated as indistinguishable from one another; that is, there is no penalty for swapping the positions of water A and water B, relative to ground truth coordinates. Before computing any loss, we aligned the prediction on the protein and ligand, then matched predicted waters one-to-one to crystal waters with the Hungarian algorithm. During training, we subsampled binding-site waters within a randomly sampled distance (0 to 5&nbsp;&Aring;) of any ligand heavy atom in the ground-truth structure, so the model saw anything from a dry pocket to a full first hydration shell.</p>
+          <p>Waters were treated as indistinguishable from one another; that is, there is no penalty for swapping the positions of water A and water B, relative to ground-truth coordinates. Before computing any loss, we aligned the prediction on the protein and ligand, then matched predicted waters one-to-one to crystal waters with the Hungarian algorithm. During training, we subsampled binding-site waters within a randomly sampled distance (0 to 5&nbsp;&Aring;) of any ligand heavy atom in the ground-truth structure, so the model saw anything from a dry pocket to a full first hydration shell.</p>
 
           <h3 id="xray-waters">A note on waters in X-ray structures</h3>
 
@@ -124,7 +124,7 @@
 
           <p>To evaluate the accuracy of protein and ligand pose, we use metrics implemented in FoldBench: protein lDDT and success rate. Success rate is defined as the percentage of ligands with a local fit measured by BiSyRMSD (which accounts for binding-site alignment and ligand symmetry) &lt; 2.0&nbsp;&Aring; and a protein&ndash;ligand interface lDDT &gt; 0.8.</p>
 
-          <p>As the first water-aware co-folding model to be released publicly, there are no comparable models to test against. Instead, a brief summary of the existing state of the field:</p>
+          <p>Because this is the first water-aware co-folding model to be released publicly, there are no comparable models to test against. Instead, we briefly summarize the state of the field:</p>
 
           <ul>
             <li><strong><a href="https://openreview.net/forum?id=kIe6nCvXzA" target="_blank" rel="noopener noreferrer">BoltzW</a></strong>, an ML model produced by fine-tuning the Boltz-2 co-folding model on highly ordered waters, is closed source but reports an average recall of less than 0.3 on a dataset of 88 structures chosen because their model can fold them correctly.</li>
@@ -132,27 +132,27 @@
             <li><strong><a href="https://arxiv.org/abs/2604.26140" target="_blank" rel="noopener noreferrer">3D-RISM</a></strong> is an established statistical-mechanical theory of solvation that calculates solvent distributions around a solute, which can then be processed to identify discrete water sites. Although it also requires an input structure, we chose 3D-RISM as a reference method for predicting solvent distributions around molecular structures. Because the number of waters placed by 3D-RISM cannot be controlled explicitly, we limit our evaluation of 3D-RISM&rsquo;s output to the N highest-occupancy water sites (as calculated by 3D-RISM) within the binding site (defined as within 5&nbsp;&Aring; of the ligand), where N is the number of waters in the crystal structure&rsquo;s binding site.</li>
           </ul>
 
-          <p>Because no benchmarks for holo structure water placement yet exist, we repurpose two popular co-folding benchmarks: Runs N&rsquo; Poses and FoldBench&rsquo;s protein&ndash;ligand dataset. From these existing datasets, we exclude all structures with zero binding-site waters. We also introduce a neutron diffraction (ND) dataset of 94 structures curated from the PDB, whose water placements are methodologically very trustworthy. Although the neutron diffraction dataset structures were not held out from fine-tuning, they are the strongest ground truth available. The neutron diffraction experiments can more accurately measure water density, and we report them as a measure of how well the model fits trustworthy labels, not as evidence of generalization, which rests on the two held-out sets.</p>
+          <p>Because no benchmarks for holo structure water placement yet exist, we repurpose two popular co-folding benchmarks: Runs N&rsquo; Poses and FoldBench&rsquo;s protein&ndash;ligand dataset. From these existing datasets, we exclude all structures with zero binding-site waters. We also introduce a neutron diffraction dataset of 94 structures curated from the PDB, whose water placements are methodologically very trustworthy. Although the neutron diffraction dataset structures were not held out from fine-tuning, they are the strongest ground truth available. The neutron diffraction experiments can more accurately measure water density, and we report them as a measure of how well the model fits trustworthy labels, not as evidence of generalization, which rests on the two held-out sets.</p>
 
           <h2 id="results">Results</h2>
 
           <figure class="article__figure">
-            <img src="../../assets/blog/2026-11/openfold-p2water/of3-water-fig1-recall.png" alt="Binding-site water recall as a function of O&ndash;O matching cutoff from 0 to 2 &Aring; on Runs N' Poses (n=2317), FoldBench (n=532) and the neutron diffraction set (n=94). WaterFlow recovers the most crystal waters, 3D-RISM and the fine-tuned model follow closely together, and the base model stays near zero.">
+            <img src="../../assets/blog/2026-11/openfold-p2water/of3-water-fig1-recall.png" width="2048" height="780" loading="lazy" decoding="async" alt="Binding-site water recall as a function of O&ndash;O matching cutoff from 0 to 2 &Aring; on Runs N' Poses (n=2317), FoldBench (n=532) and the neutron diffraction set (n=94). WaterFlow recovers the most crystal waters, 3D-RISM and the fine-tuned model follow closely together, and the base model stays near zero.">
             <figcaption>Figure 1. Benchmarking water placement.</figcaption>
           </figure>
 
-          <p>We compared the fine-tuned model to the water-na&iuml;ve, no-fine-tuning base model across three benchmarks: Runs N&rsquo; Poses, FoldBench, and the neutron diffraction set. Runs N&rsquo; Poses and FoldBench contain only structures released after the model&rsquo;s 2021 training cutoff, so they are the held-out tests. Most of the neutron diffraction structures (70 of 94) were released before that cutoff, so the model has seen some during fine-tuning. Both the fine-tuned and baseline models were told how many crystallographic waters sit within 5&nbsp;&Aring; of the ligand, so any difference comes from where they put the waters, not how many. This is an evaluation of water-placement accuracy under a known water-count assumption; it does not yet measure the model&rsquo;s ability to predict how many waters occupy a binding site.</p>
+          <p>We compared the fine-tuned model to the water-na&iuml;ve, no-fine-tuning base model across three benchmarks: Runs N&rsquo; Poses, FoldBench, and the neutron diffraction set. Runs N&rsquo; Poses and FoldBench contain only structures released after the model&rsquo;s 2021 training cutoff, so they are the held-out tests. Most of the neutron diffraction structures (70 of 94) were released before that cutoff, so the model has seen some during fine-tuning. Both the fine-tuned and base models were told how many crystallographic waters sit within 5&nbsp;&Aring; of the ligand, so any difference comes from where they put the waters, not how many. This is an evaluation of water-placement accuracy under a known water-count assumption; it does not yet measure the model&rsquo;s ability to predict how many waters occupy a binding site.</p>
 
           <p>How close does a predicted water have to be to count as correct? Rather than pick one cutoff, Figure 1 shows the cumulative fraction of crystal binding-site waters recovered as the matching distance grows from 0 to 2&nbsp;&Aring;. Each predicted water can match at most one crystal water.</p>
 
-          <p>The base model recovers almost no crystal waters at any cutoff: 1% within 1&nbsp;&Aring; on Runs N&rsquo; Poses and FoldBench, and 3% on the neutron diffraction set. The fine-tuned model recovers 10% within 1&nbsp;&Aring; on Runs N&rsquo; Poses, 12% on FoldBench, and 19% on the neutron diffraction set. The improvement is broad rather than driven by a few targets: recall goes up for 1,573 out of 2,317 Runs N&rsquo; Poses targets, 357 of 532 FoldBench targets, and 75 of 94 neutron diffraction targets.</p>
+          <p>The base model recovers almost no crystal waters at any cutoff: 1% within 1&nbsp;&Aring; on Runs N&rsquo; Poses and FoldBench, and 3% on the neutron diffraction set. The fine-tuned model recovers 10% within 1&nbsp;&Aring; on Runs N&rsquo; Poses, 12% on FoldBench, and 19% on the neutron diffraction set. The improvement is broad rather than driven by a few targets: recall goes up for 1,573 of 2,317 Runs N&rsquo; Poses targets, 357 of 532 FoldBench targets, and 75 of 94 neutron diffraction targets.</p>
 
           <p>On FoldBench, the fine-tuned model nearly matches 3D-RISM. Within 1&nbsp;&Aring;, 3D-RISM recovers 15% of crystal waters and the model 12%, a small but statistically significant difference (p &lt; 0.001). The gap closes at looser cutoffs: within 2&nbsp;&Aring; the two are indistinguishable (both 28%). We interpret this pattern to indicate that the model puts its waters in roughly the right places as often as 3D-RISM does, but 3D-RISM places them more precisely. The neutron diffraction set shows the same pattern: 3D-RISM is ahead within 1&nbsp;&Aring; (26% vs 19%).</p>
 
           <p>We also compared against WaterFlow, a generative model trained specifically to place waters around a given structure. We gave it the same inputs as 3D-RISM: the fine-tuned model&rsquo;s predicted structure with its waters removed, keeping only its N most confident placements in the binding site. WaterFlow recovers the most crystal waters of the three methods on every benchmark: within 1&nbsp;&Aring;, 24% on Runs N&rsquo; Poses, 27% on FoldBench and 46% on the neutron diffraction set, roughly twice the fine-tuned model&rsquo;s recall. Because WaterFlow and 3D-RISM worked from the same predicted structures, the gap shows that the fine-tuned model has room to place its own waters better, not that its structures are wrong.</p>
 
           <figure class="article__figure">
-            <img src="../../assets/blog/2026-11/openfold-p2water/of3-water-fig2-pose-lddt.png" alt="Bar charts comparing the base model (P2) with the fine-tuned model. Ligand success rate: 57% vs 43% on Runs N' Poses, 43% vs 37% on FoldBench, 78% vs 75% on the neutron diffraction set. Protein lDDT: 0.923 vs 0.906, 0.930 vs 0.926, and 0.955 vs 0.950.">
+            <img src="../../assets/blog/2026-11/openfold-p2water/of3-water-fig2-pose-lddt.png" width="2048" height="811" loading="lazy" decoding="async" alt="Bar charts comparing the base model (P2) with the fine-tuned model. Ligand success rate: 57% vs 43% on Runs N' Poses, 43% vs 37% on FoldBench, 78% vs 75% on the neutron diffraction set. Protein lDDT: 0.923 vs 0.906, 0.930 vs 0.926, and 0.955 vs 0.950.">
             <figcaption>Figure 2. Ligand pose and protein fold benchmarks.</figcaption>
           </figure>
 
@@ -176,23 +176,16 @@
 
           <h2 id="conclusions">Conclusions</h2>
 
-          <p>We believe that inclusion of waters in co-folding represents a significant milestone. For these models to reflect physical reality, they have to be extended to additional capabilities (like water modelling). We anticipate this will improve not just the co-folding performance but also unlock downstream modelling tasks such as affinity prediction. Improving these models will allow for faster discovery of novel medicines, bringing them to patients around the world.</p>
-
+          <p>We believe that inclusion of waters in co-folding represents a significant milestone. For these models to reflect physical reality, they have to be extended to additional capabilities (like water modeling). We anticipate this will improve not just the co-folding performance but also unlock downstream modeling tasks such as affinity prediction. Improving these models will allow for faster discovery of novel medicines, bringing them to patients around the world.</p>
+          
           <p>We are introducing an early preview of water-aware, end-to-end protein&ndash;ligand co-folding with OpenFold3. We want to engage with the community, improve the model, its architecture, and evaluation before the final release.</p>
-
-          <p>For the final release, the entire dataset, code, and checkpoints will be made available, in the true spirit of open science that drives the OpenFold consortium and the entire OMSF ecosystem. Today, we&rsquo;re making the water co-folding available via our webserver, the <a href="https://portal.openfold.io/" target="_blank" rel="noopener noreferrer">Portal</a>. We invite you to try out the model and provide us with your feedback. Users can submit protein&ndash;ligand systems through the Portal and request explicit binding-site waters, enabling direct exploration of predicted hydration patterns around ligand-binding pockets.</p>
+          
+          <p>For the final release, the entire dataset, code, and checkpoints will be made available, in the true spirit of open science that drives the OpenFold Consortium and the entire OMSF ecosystem. Today, we&rsquo;re making the water co-folding available via our web server, the <a href="https://portal.openfold.io/" target="_blank" rel="noopener noreferrer">Portal</a>. We invite you to try out the model and provide us with your feedback. Users can submit protein&ndash;ligand systems through the Portal and request explicit binding-site waters, enabling direct exploration of predicted hydration patterns around ligand-binding pockets.</p>
+          
+          <h2 id="acknowledgements">Acknowledgements</h2>
 
           <p>Community collaboration has become increasingly impactful in advancing the state of drug discovery methods. This release could not have happened without the collaborative spirit of the consortium. We want to thank our keystone members, the AlQuraishi Lab at Columbia, as well as the Kurtzman Lab, and Greg Warren. Industry collaborators from the consortium have joined this project and made it possible: AMD Research and Apheris. If you would like to participate in collaborations like this, please reach out and become a part of this group of 40+ biotechs and pharma companies working to advance the ML frontier in drug discovery.</p>
 
-          <h2 id="acknowledgements">Acknowledgements</h2>
-
-          <ul>
-            <li>Kurtzman Lab</li>
-            <li>AMD Research</li>
-            <li>Apheris</li>
-            <li>Greg Warren</li>
-            <li>OpenFold Team</li>
-          </ul>
         </div>
         </div>
       </article>

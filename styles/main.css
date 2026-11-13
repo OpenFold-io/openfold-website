@@ -1328,6 +1328,7 @@ main {
 .article__figure img {
   width: auto;
   max-width: 100%;
+  height: auto;
   margin-inline: auto;
   background-color: #ffffff;
   border-radius: var(--radius);
