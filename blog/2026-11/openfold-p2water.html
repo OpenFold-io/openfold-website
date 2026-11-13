@@ -118,10 +118,10 @@
           <p>We present an early release of our OpenFold3-P2-ft-water model, based on <a href="https://portal.openfold.io/reports/of3p2_technical_report.pdf" target="_blank" rel="noopener noreferrer">OpenFold3-P2</a>, which provides end-to-end co-folding of protein&ndash;small-molecule complexes with inclusion of waters. We first showcased this model during the <a href="https://www.cofold.org/" target="_blank" rel="noopener noreferrer">co-folding summit</a> in May 2026 and now want to provide it to the wider community. We&rsquo;re working towards a full release (data, methods, training code, and checkpoint) in 2027, and we want to engage the community in evaluating this capability. For protein&ndash;protein and protein&ndash;ligand co-folding a range of benchmarks and metrics exist; evaluation of water co-folding is a new challenge to the community. We present the outline of our methodology, data processing, and approach to evaluation, and provide an interactive server allowing the community to evaluate the capabilities of our models.</p>
 
           <figure class="article__figure">
-            <video autoplay muted loop playsinline preload="metadata" poster="../../assets/blog/2026-11/openfold-p2water/of3-water-inference-run-poster.jpg" aria-label="Side-by-side view of a real inference run for PDB 7FX1: the noisy structure the sampler carries on the left and the network's estimate of the final structure on the right, from step 115 to step 200 of 200.">
-              <source src="../../assets/blog/2026-11/openfold-p2water/of3-water-inference-run.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline preload="auto" aria-label="Animation of OpenFold3-P2-ft-water predicting a second protein&ndash;ligand complex, PDB 8GPZ, shown as a protein surface during diffusion with the ligand and binding-site waters.">
+              <source src="../../assets/blog/2026-11/openfold-p2water/of3-water-diffusion-8gpz.mp4" type="video/mp4">
             </video>
-            <figcaption>Diffusion in a real inference run (PDB 7FX1, fine-tuned model). Left: the noisy structure the sampler carries. Right: the network&rsquo;s estimate of the final structure, with predicted waters (blue) and crystal waters (red).</figcaption>
+            <figcaption>The same diffusion process for a second system, PDB 8GPZ: OpenFold3-P2-ft-water denoises the complex, shown as a surface, into a ligand-bound pocket with placed waters.</figcaption>
           </figure>
 
           <h2 id="methods">Methods</h2>
