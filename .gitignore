@@ -17,3 +17,6 @@ Thumbs.db
 *.exe
 *.o
 *.so
+
+# rclone google docs drafts
+out/
