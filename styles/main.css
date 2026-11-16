@@ -1089,8 +1089,22 @@ main {
   background-color: var(--color-surface);
 }
 
-.article__avatars img + img {
+.article__avatars > * + * {
   margin-left: -12px;
+}
+
+.article__authors a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.article__authors a:hover {
+  text-decoration: underline;
+}
+
+.article__affiliation {
+  color: var(--color-text-secondary);
+  font-weight: 400;
 }
 
 .article__authors {
