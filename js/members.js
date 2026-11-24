@@ -32,6 +32,7 @@
     { img: 'cyrus.png',               alt: 'Cyrus Biotechnology', url: 'https://cyrusbio.com/' },
     { img: 'daiichisankyo.jpg',       alt: 'Daiichi Sankyo',    url: 'https://www.daiichisankyo.com/' },
     { img: 'dassault.png',            alt: 'Dassault Systèmes', url: 'https://www.3ds.com/' },
+    { img: 'DDN.png',                 alt: 'DDN',               url: 'https://www.ddn.com/' },
     { img: 'dyno.png',                alt: 'Dyno Therapeutics', url: 'https://www.dynotx.com/' },
     { img: 'flagship.jpg',            alt: 'Flagship Pioneering', url: 'https://www.flagshippioneering.com/' },
     { img: 'JohnsonAndJohnson.png',   alt: 'Johnson & Johnson', url: 'https://www.jnj.com/' },
